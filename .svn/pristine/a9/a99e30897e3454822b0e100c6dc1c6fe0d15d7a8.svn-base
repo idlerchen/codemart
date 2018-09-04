@@ -1,0 +1,90 @@
+package com.fenbi.codemart.dao.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Apply;
+import com.fenbi.codemart.dao.ApplyDao;
+import com.fenbi.codemart.dao.BaseDao;
+
+public class ApplyDaoImpl extends BaseDao<Apply> implements ApplyDao {
+
+	@Override
+	public int createApply(Apply apply) {
+		String sql = "INSERT INTO apply(item_id,developer_id,state,note,create_time)"
+				+ " VALUES(?,?,?,?,NOW())";
+		return this.update(sql, apply.getItemId(), apply.getDeveloperId(), apply.getState(), apply.getNote());
+	}
+
+//	@Override
+//	public List<Apply> selectApplysByItemId(int itemId) {
+//		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+//				+ " FROM apply"
+//				+ " WHERE item_id = ?";
+//		return this.getBeanList(sql, itemId);
+//	}
+	
+	@Override
+	public List<Apply> selectApplysByItemId(int itemId) {
+		String sql = "SELECT apply.id id,apply.item_id itemId,apply.developer_id developerId," + 
+				"apply.state state,apply.note note,apply.create_time createTime," + 
+				"work_status.name workStatus," + 
+				"user.realname realName,user.telephone telephone,user.photo_url photoUrl," + 
+				"province.NAME provinceName,city.NAME cityName,county.NAME countyName " + 
+				"FROM apply,developer,USER,province,city,county,work_status " + 
+				"WHERE apply.developer_id = developer.id AND developer.userid = user.id AND " + 
+				"user.province_id =province.id AND user.city_id = city.id AND user.county_id = county.id " + 
+				"AND developer.work_status = work_status.id " + 
+				"AND item_id = ? " + 
+				"ORDER BY apply.id DESC";
+		return this.getBeanList(sql, itemId);
+	}
+
+	@Override
+	public Apply selectApplyByApplyId(int applyid) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE id = ?";
+		return this.getBean(sql, applyid);
+	}
+
+	@Override
+	public List<Apply> selectApplysByDeveloperId(int developerId) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE developer_id = ? order by id desc";
+		return this.getBeanList(sql, developerId);
+	}
+
+	@Override
+	public int updateStateByApplyId(int state, int applyId) {
+		String sql = "UPDATE apply"
+				+ "	SET state = ?"
+				+ " WHERE id = ?";
+		return this.update(sql, state, applyId);
+	}
+
+	@Override
+	public int updateNoteByApplyId(String note, int applyId) {
+		String sql = "UPDATE apply"
+				+ "	SET note = ?"
+				+ " WHERE id = ?";
+		return this.update(sql, note, applyId);
+	}
+	
+	@Override
+	public Apply selectApplysByDeveloperAndItem(int developerId,int itemId) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE developer_id = ? and item_id = ?";
+		return this.getBean(sql, developerId,itemId);
+	}
+
+	@Override
+	public List<Apply> selectApplysByState(int state) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE state = ?";
+		return this.getBeanList(sql, state);
+	}
+
+}

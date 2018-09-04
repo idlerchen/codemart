@@ -1,0 +1,7 @@
+  
+$(".ant-popover-open").click(function(){
+	$("#statusarea").removeClass("ant-popover-hidden");
+})
+
+
+

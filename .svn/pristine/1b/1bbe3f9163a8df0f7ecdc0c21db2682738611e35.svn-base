@@ -1,0 +1,26 @@
+$(function() {
+	//$("#statusarea").addClass("ant-popover-hidden");
+	$(".ant-popover-open").hover(function() {
+		$("#statusarea").removeClass("ant-popover-hidden");
+	}, function() {
+		$("#statusarea").addClass("ant-popover-hidden");
+	});
+	
+	
+	//页面加载后展示所有状态列表
+	$.get("ItemServlet",
+			{"way":"getItemStatusList"},
+			function(response){
+				if(response.code==1){
+					var itemStates= response.itemStateList;
+					$.each(itemStates,function(i,itemState){
+						var id = itemState.id;
+						var name=itemState.name;
+						$(".ant-menu-root").append("<li class='ant-menu-item' role='menuitem' aria-selected='false' value='"+id+"'>"+name+"</li>");
+					});
+				}
+			},
+			"json"		
+	)
+	
+})

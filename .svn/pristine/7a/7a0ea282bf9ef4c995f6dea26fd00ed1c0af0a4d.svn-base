@@ -1,0 +1,59 @@
+package com.fenbi.codemart.dao.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Apply;
+import com.fenbi.codemart.dao.ApplyDao;
+import com.fenbi.codemart.dao.BaseDao;
+
+public class ApplyDaoImpl extends BaseDao<Apply> implements ApplyDao {
+
+	@Override
+	public int createApply(Apply apply) {
+		String sql = "INSERT INTO apply(item_id,developer_id,state,note,create_time)"
+				+ " VALUES(?,?,?,?,NOW())";
+		return this.update(sql, apply.getItemId(), apply.getDeveloperId(), apply.getState(), apply.getNote());
+	}
+
+	@Override
+	public List<Apply> selectApplysByItemId(int itemId) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE item_id = ?";
+		return this.getBeanList(sql, itemId);
+	}
+
+	@Override
+	public Apply selectApplyByApplyId(int applyid) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE id = ?";
+		return this.getBean(sql, applyid);
+	}
+
+	@Override
+	public List<Apply> selectApplysByDeveloperId(int developerId) {
+		String sql = "SELECT id,item_id itemId,developer_id developerId,state,note,create_time createTime"
+				+ " FROM apply"
+				+ " WHERE developer_id = ? order by id desc";
+		return this.getBeanList(sql, developerId);
+	}
+
+	@Override
+	public int updateStateByApplyId(int state, int applyId) {
+		String sql = "UPDATE apply"
+				+ "	SET state = ?"
+				+ " WHERE id = ?";
+		return this.update(sql, state, applyId);
+	}
+
+	@Override
+	public int updateNoteByApplyId(String note, int applyId) {
+		String sql = "UPDATE apply"
+				+ "	SET note = ?"
+				+ " WHERE id = ?";
+		return this.update(sql, note, applyId);
+	}
+	
+
+}

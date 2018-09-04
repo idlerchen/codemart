@@ -1,0 +1,5 @@
+CREATE TABLE apply_status(
+id INT,
+NAME VARCHAR(30)
+);
+INSERT INTO apply_status(id,NAME) VALUES(1,"待审核"),(2,"已通过"),(3,"已拒绝"),(4,"已取消");

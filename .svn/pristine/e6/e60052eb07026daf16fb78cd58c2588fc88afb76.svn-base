@@ -1,0 +1,105 @@
+package com.fenbi.codemart.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+import com.fenbi.codemart.bean.Industry;
+import com.fenbi.codemart.bean.Item;
+import com.fenbi.codemart.bean.User;
+import com.fenbi.codemart.service.IndustryService;
+import com.fenbi.codemart.service.ItemService;
+import com.fenbi.codemart.service.impl.IndustryServiceImpl;
+import com.fenbi.codemart.service.impl.ItemServiceImpl;
+import com.fenbi.codemart.utils.WEButils;
+import com.google.gson.Gson;
+
+public class ItemServlet extends BaseServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 生成新发布的项目，存入数据库
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void saveItem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 获取请求参数，封装item项目对象
+		Item item = WEButils.param2Bean(request, new Item());
+
+		// 获取当前账户信息
+		// 设置用户id、状态、应用到项目对象中
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		item.setUserid(loginUser.getId());
+		item.setState(1);
+		item.setApplicantNum(0);
+
+		// 保存项目对象，写入数据库
+		ItemService is = new ItemServiceImpl();
+		boolean flag = is.createItem(item);
+
+		// 发布成功时，转发到“我发布的项目”
+		if (flag) {
+			request.getRequestDispatcher("ItemServlet?way=getMyItems");
+		}
+	}
+
+	/**
+	 * 获取行业列表信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getIndustrys(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 解决json响应乱码
+		response.setContentType("application/json;charset=utf-8");
+
+		IndustryService is = new IndustryServiceImpl();
+		List<Industry> industrys = is.getIndustrys();
+
+		// 设置map属性集
+		HashMap<String, Object> map = new HashMap<>();
+		if (industrys != null) {
+			map.put("code", 1);
+			map.put("industrys", industrys);
+		} else {
+			map.put("code", 0);
+		}
+
+		// 将map属性集，转换成json字符串并发送给ajax
+		String jsonStr = JSON.toJSONString(map);
+		response.getWriter().print(jsonStr);
+	}
+	
+	/**
+	 * 获取我发布的项目
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getMyItems(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		
+		ItemService is = new ItemServiceImpl();
+		List<Item> myItems = is.getItemByUserId(loginUser.getId());
+		
+		// myItems若为空，el表达式不会输出任何值
+		request.setAttribute("myItems", myItems);
+		request.getRequestDispatcher("/page/myitem/myIssueProjects.jsp").forward(request, response);
+	}
+}

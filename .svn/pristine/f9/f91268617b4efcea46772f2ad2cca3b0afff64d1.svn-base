@@ -1,0 +1,17 @@
+$("#apply").click(function(){
+	
+	//ajax判断是否有这个开发者信息，有则插入，无则提醒
+	$.post("DeveloperServlet",
+			{"way":"getDeveloper"},
+			function(response){
+				if(response.code >0){//如果是存在这个开发者，则插入跳转
+					var itemid = $("#hiddenId").val();
+					window.location = "ApplyServlet?way=saveApply&itemid="+itemid;
+				}else{//如果没有这个开发者，则不处理，给出提示
+					alert('请注册开发者信息');
+				}
+			},
+			'json'
+	);
+	
+})

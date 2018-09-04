@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<header class="header-2QovX">
+	<div class="content-3gsSy">
+		<div class="header-3g-Z7">
+			<a href="index.jsp">
+				<img class="logo-image-2HwTN" src="img/mart-logo.png" alt="码市">
+				<img class="logo-white-image-2gH0M" src="img/mart-logo-white.png" alt="码市">
+			</a>
+			<ul class="nav-2_lzX">
+				<li>
+					<a href="ItemServlet?way=getAllItems">项目</a>
+				</li>
+				<li class="value-add-service-web-11arw">
+					<a>帮助</a>
+					<div class="child-menu-36E-p">
+						<div class="menu-item-30Hv8">
+							<a href="#">常见问题</a>
+						</div>
+						<div class="menu-item-30Hv8">
+							<a href="#">我是需求方</a>
+						</div>
+						<div class="menu-item-30Hv8">
+							<a href="#">我是开发方</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+			<!--登陆前的组件-->
+			<c:if test="${empty sessionScope.loginUser }">
+			 <div class="right-zone-2Mffb">
+				<div class="login-zone-1ZN_U">
+					<div class="btns">
+						<a class="user button" href="page/user/login.jsp">登录</a>
+						<a class="user button" href="page/user/register.jsp">注册</a>
+					</div>
+				</div>
+			</div> 
+			</c:if>
+			
+			<!--登陆后的组件-->
+			<c:if test="${!empty sessionScope.loginUser }">
+ 			<div class="right-zone-2Mffb">
+				<div class="user-avatar-3Wxpk">
+					<a href="/" class="avatar-link-2DfzB" target="_self">
+						<img src="img/headImg.png" height="40px">
+					</a>
+					<!-- <i class="fa fa-chevron-down"></i> -->
+					<ul class="avatar-menu-3ng_-">
+						<li><a><span>Hello, </span><span class="username-2IS6I">${sessionScope.loginUser.username }</span></a></li>
+						<li><a href="UserInfoServlet?way=getUser"><i class="fa fa-user"></i>个人中心</a></li>
+						<li>
+						<c:if test="${sessionScope.loginUser.userType == 1 }">
+							<a href="ItemServlet?way=getMyItems"><i class="fa fa-pencil"></i>我发布的项目</a>
+							</c:if>
+							<c:if test="${sessionScope.loginUser.userType == 0 }">
+							<a href="page/myitem/myJointProjects.jsp"><i class="fa fa-flag"></i>我参与的项目</a>
+							</c:if>
+						</li>
+						<li><a href="UserServlet?way=logout"><i class="fa fa-sign-out"></i>退出登录</a></li>
+					</ul>
+				</div>
+			</div> 	
+			</c:if>
+						
+		</div>
+	</div>
+</header>

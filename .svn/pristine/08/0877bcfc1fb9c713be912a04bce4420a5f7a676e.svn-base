@@ -1,0 +1,24 @@
+package com.fenbi.codemart.service.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.ItemType;
+import com.fenbi.codemart.dao.ItemTypeDao;
+import com.fenbi.codemart.dao.impl.ItemTypeDaoImpl;
+import com.fenbi.codemart.service.ItemTypeService;
+
+public class ItemTypeServiceImpl implements ItemTypeService {
+
+	ItemTypeDao itemTypeDao = new ItemTypeDaoImpl();
+	
+	@Override
+	public List<ItemType> getItemTypes() {
+		return itemTypeDao.selectItemTypes();
+	}
+
+	@Override
+	public ItemType getItemTypesByItemTypeId(String itemTypeId) {
+		return itemTypeDao.selectItemTypesByItemTypeId(itemTypeId);
+	}
+
+}

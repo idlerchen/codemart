@@ -1,0 +1,485 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://codemart.com/user/skills -->
+<html lang="zh-cn">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
+<title>码市 – 互联网软件外包服务平台</title>
+<meta name="Keywords"
+	content="Coding,码市,Coding码市,外包,软件外包,Coding源码市场,众包,云端众包,远程工作,悬赏平台,Coding悬赏平台,软件项目需求,软件开发">
+<meta name="Description"
+	content="码市是 Coding 推出的互联网软件外包服务平台，意在连接需求方与广大开发者。让项目的需求方快速的找到合适的开发者，完成项目开发工作。同时也帮助开发者找到合适的项目将技术变成财富。码市基于 Coding 的在线工具对项目进行管控，保障双方的利益。">
+<base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/">
+<link rel="icon" type="image/x-icon"
+	href="https://codemart.com/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="https://codemart.com/favicon.ico">
+<script src="js/jquery-1.11.1.js"></script>
+<link rel="stylesheet" href="css/main.min.css">
+<link rel="stylesheet" href="css/mycss.css">
+</head>
+
+<body>
+	
+	<input type="hidden" value="陈国强" name="user_name">
+	<input type="hidden" value="18720080045" name="user_phone">
+	<input type="hidden" value="525448245@qq.com" name="user_email">
+	<input type="hidden" value="web_test02" name="user_global_key">
+
+	<div id="wx_logo" style="margin: 0 auto; display: none;">
+		<img src="img/wx_logo.png">
+	</div>
+	<div class="main-container">
+		<header id="mart-header" class="">
+			<%@include file="/page/base/martheader.jsp"%>
+		</header>
+		<div class="view-container">
+			<div class="form" id="mart-skills">
+				<div class="breadcrumb">
+					<span class="crumb-parent">个人中心</span> <span class="crumb-arrow">&nbsp;→&nbsp;</span>
+					<span class="crumb-current">技能展示</span> <span class="coding-info">
+					<span class="reward-status">接单状态:&nbsp; 开启 </span></span>
+				</div>
+				<div class="menu user-menu">
+					<div>
+						<div class="side-nav ">
+							<ul>
+								<li class="side-nav-header border-radius-top"><span
+									class="subtitle">基本信息</span></li>
+								<li class="side-nav-item basic-info"><a
+									href="page/userinfo/userInfo.jsp" class="nav-link  "> <svg
+											width="14px" height="15px" viewBox="0 0 14 15" version="1.1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink">
+												<g id="个人信息" stroke="none" stroke-width="1" fill="none"
+												fill-rule="evenodd">
+													<path
+												d="M11.4632358,8.65042331 C11.7952137,7.84747683 11.9992001,6.95653623 11.9992001,5.99960003 C11.9992001,2.68682088 9.76034931,0 6.99953336,0 C4.23771749,0 1.99986668,2.68682088 1.99986668,5.99960003 C1.99986668,6.95653623 2.20285314,7.84747683 2.53483101,8.65042331 C0.997933471,9.93433771 0,11.8402107 0,13.9990667 C0,14.5520299 0.446970202,15 0.999933338,15 C1.55189654,15 1.99986668,14.5520299 1.99986668,13.9990667 C1.99986668,12.5621625 2.61482568,11.2752483 3.58576095,10.3633091 C4.48070129,11.3712419 5.67562163,12.0002 6.99953336,12.0002 C8.32244517,12.0002 9.51736551,11.3712419 10.4123058,10.3633091 C11.3832411,11.2752483 11.9992001,12.5621625 11.9992001,13.9990667 C11.9992001,14.5520299 12.4461703,15 12.9991334,15 C13.5510966,15 13.9990667,14.5520299 13.9990667,13.9990667 C13.9990667,11.8402107 13.0001333,9.93433771 11.4632358,8.65042331 L11.4632358,8.65042331 Z M6.99953336,10.0003333 C5.34264382,10.0003333 3.99973335,8.2094527 3.99973335,5.99960003 C3.99973335,3.79074728 5.34264382,2.00086661 6.99953336,2.00086661 C8.65642291,2.00086661 9.99933338,3.79074728 9.99933338,5.99960003 C9.99933338,8.2094527 8.65642291,10.0003333 6.99953336,10.0003333 L6.99953336,10.0003333 Z"
+												id="icon-userinfo" fill="#979FA8"></path>
+												</g>
+											</svg> <span>账户信息</span> 
+								</a></li>
+
+								<div class="clearfix"></div>
+								<li class="side-nav-header border-radius-middle"><span
+									class="subtitle">开发者信息</span></li>
+								<li class="side-nav-item mart-data"><a
+									href="page/userinfo/demanderSkills.jsp"
+									class="nav-link   active  "> <svg width="14px"
+											height="16px" viewBox="0 0 14 16" version="1.1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink">
+												<g id="技能展示" stroke="none" stroke-width="1" fill="none"
+												fill-rule="evenodd">
+													<path
+												d="M3,2.183 L3,1 C3,0.447 2.552,0 2,0 C1.447,0 1,0.447 1,1 L1,2.183 C1.314,2.071 1.647,1.999 2,1.999 C2.352,1.999 2.685,2.071 3,2.183 L3,2.183 Z M8,7.183 L8,1 C8,0.447 7.552,0 7,0 C6.447,0 6,0.447 6,1 L6,7.183 C6.314,7.071 6.647,7 7,7 C7.352,7 7.685,7.071 8,7.183 L8,7.183 Z M13,2.183 L13,1 C13,0.447 12.552,0 12,0 C11.447,0 11,0.447 11,1 L11,2.183 C11.314,2.071 11.647,1.999 12,1.999 C12.352,1.999 12.685,2.071 13,2.183 L13,2.183 Z M1,8.816 L1,15 C1,15.552 1.447,15.999 2,15.999 C2.552,15.999 3,15.552 3,15 L3,8.816 C2.685,8.927 2.352,9 2,9 C1.647,9 1.314,8.927 1,8.816 L1,8.816 Z M11,8.816 L11,15 C11,15.552 11.447,15.999 12,15.999 C12.552,15.999 13,15.552 13,15 L13,8.816 C12.685,8.927 12.352,9 12,9 C11.647,9 11.314,8.927 11,8.816 L11,8.816 Z M12,2.999 C10.895,2.999 10,3.895 10,4.999 L10,6 C10,7.104 10.895,7.999 12,7.999 C13.104,7.999 14,7.104 14,6 L14,4.999 C14,3.895 13.104,2.999 12,2.999 L12,2.999 Z M7,7.999 C5.895,7.999 5,8.895 5,9.999 L5,10.999 C5,12.104 5.895,12.999 7,12.999 C8.104,12.999 9,12.104 9,10.999 L9,9.999 C9,8.895 8.104,7.999 7,7.999 L7,7.999 Z M6,13.816 L6,15 C6,15.552 6.447,15.999 7,15.999 C7.552,15.999 8,15.552 8,15 L8,13.816 C7.685,13.927 7.352,13.999 7,13.999 C6.647,13.999 6.314,13.927 6,13.816 L6,13.816 Z M2,2.999 C0.895,2.999 0,3.895 0,4.999 L0,6 C0,7.104 0.895,7.999 2,7.999 C3.104,7.999 4,7.104 4,6 L4,4.999 C4,3.895 3.104,2.999 2,2.999 L2,2.999 Z"
+												id="icon-skills" fill="#979FA8"></path>
+												</g>
+											</svg> <span>技能展示</span> 
+								</a></li>
+								<div class="clearfix"></div>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<form action="DeveloperServlet?way=saveDeveloper" method="post">
+				<div class="info form-container">
+					<div class="box">
+						<hr class="head-line">
+
+						<div class="role-skill-container clearfix">
+							<div class="label">
+								<label class="head">让 Coding 了解您擅长的技能，为您推荐最合适的项目</label>
+							</div>
+
+							<header>
+								<h2>能胜任的角色类型 *</h2>
+							</header>
+							
+							<div class="role-skill-tab-box">
+								<div class="tabbox-content">
+									<div class="tab-header clearfix" >
+										<div class="tab active" tab="1">
+											<span>开发工程师</span>
+										</div>
+										<div class="tab" tab="2">
+											<span>设计师</span>
+										</div>
+										<div class="tab" tab="3">
+											<span>产品经理</span>
+										</div>
+										<div class="tab" tab="4">
+											<span>测试工程师</span>
+										</div>
+									</div>
+									<div class="tab-body active" tab="1">
+										<div class="form">
+											<div class="form-row input" id="roletypearea">
+													<input type="checkbox" value="5" name="role" id="role1"/><label for="role1">前端开发</label>
+													<input type="checkbox" value="6" name="role" id="role2"/><label for="role2">后端开发</label>
+													<input type="checkbox" value="7" name="role" id="role3"/><label for="role3">iOS 开发</label>
+													<input type="checkbox" value="8" name="role" id="role4"/><label for="role4">Android 开发</label>
+													<input type="checkbox" value="9" name="role" id="role5"/><label for="role5">微信应用开发</label>
+													<input type="checkbox" value="10" name="role" id="role6"/><label for="role6">全栈开发</label>
+											</div>
+										</div>
+									</div>
+									<div class="tab-body" tab="2">
+										<div class="form">
+											<div class="form-row input" id="roletypearea">
+												<input type="checkbox" value="11" name="role" id="role7"/><label for="role7">设计师</label>
+											</div>
+										</div>
+									</div>
+									<div class="tab-body" tab="3">
+										<div class="form">
+											<div class="form-row input" id="roletypearea">
+												<input type="checkbox" value="12" name="role" id="role8"/><label for="role8">设计师</label>
+											</div>
+										</div>
+									</div>
+									<div class="tab-body" tab="4">
+										<div class="form">
+											<div class="form-row input" id="roletypearea">
+												<input type="checkbox" value="13" name="role" id="role9"/><label for="role9">设计师</label>
+											</div>
+										</div>
+									</div>
+										<div>
+											<button class="submit">保存修改</button>
+										</div>
+									</div>
+							</div>
+						</div>
+						<!-- <div class="input project_exp" id="project_exp">
+							<header class="project-header">
+								<h2>
+									项目经验 * <span> （为了更好地展示您的实力，请至少添加2个项目经验） </span>
+								</h2>
+							</header>
+							
+							<label class="sub-add-btn"> <a href="javascript:void(0);"
+								class="experience-add-button font-size-13"> +&nbsp;添加项目经验 </a>
+							</label>
+
+							<div class="exp-modal" style="display: none;"
+								id="experience-add-modal">
+								<div class="modal-wrapper">
+									<div class="modal-dialog">
+										<span class="close cursor" style="float: right;"><i
+											class="fa fa-remove"></i></span>
+										<div class="title">项目经验</div>
+
+										<form class="modal-content" style="margin-bottom: 0;"
+											onsubmit="return false;">
+											<div class="form-group">
+												<label for="project_name" class="form-label">项目名称 *</label>
+												<input type="text" name="project_name" id="project_name"
+													class="full-input">
+											</div>
+											<div class="form-group">
+												<label for="project_type" class="form-label">项目类型 *</label>
+												<select class="full-input selectBox" name="project_type"
+													id="project_type" style="display: none;">
+													<option value="">请选择</option>
+													<option value="1">Web 网站</option>
+													<option value="2">移动应用 APP</option>
+													<option value="3">微信开发</option>
+													<option value="4">HTML5 应用</option>
+													<option value="5">其他</option>
+												</select> <a class="selectBox full-input selectBox-dropdown" title=""
+													tabindex="0" style="width: 0px; display: inline-block;"><span
+													class="selectBox-label" style="width: 0px;">请选择</span><span
+													class="selectBox-arrow"></span></a>
+											</div>
+											<div class="form-group">
+												<label for="" class="form-label">项目周期 * </label>
+												<div name="start_time" class="date-input"></div>
+												<span class="help-text"> — </span>
+												<div name="finish_time" class="date-input"></div>
+												<input type="checkbox" class="i-check-box" name="until_now">
+												<span>至今</span>
+											</div>
+											<div class="form-group">
+												<label for="industry" class="form-label multi-line">
+													行业 * </label> <input type="text" name="industry" id="industry"
+													value="" class="full-input selectize-industry selectized"
+													placeholder="请输入行业" tabindex="-1" style="display: none;">
+												<div
+													class="selectize-control full-input selectize-industry multi">
+													<div class="selectize-input items not-full has-options">
+														<input type="text" autocomplete="off" tabindex=""
+															placeholder="请输入行业" style="width: 69px;">
+													</div>
+													<div
+														class="selectize-dropdown multi full-input selectize-industry"
+														style="display: none; width: 100px; top: 0px; left: 0px;">
+														<div class="selectize-dropdown-content"></div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="description" class="form-label multi-line">
+													项目描述 * </label>
+												<textarea name="description" id="description" rows="5"
+													class="full-input" placeholder="请输入您的项目描述" wrap="hard"></textarea>
+												<p class="help-text explain">长度 100 - 2000 字</p>
+											</div>
+											<div class="form-group">
+												<label for="duty" class="form-label multi-line">
+													我的职责 * </label>
+												<textarea name="duty" id="duty" rows="5" class="full-input"
+													placeholder="请输入您的项目经历" wrap="hard"></textarea>
+												<p class="help-text explain">长度 50 - 1000 字</p>
+											</div>
+											<div class="form-group">
+												<label for="link" class="form-label">展示链接</label> <input
+													type="text" name="link" id="link" class="full-input"
+													placeholder="您可以把您的作品打包上传到网盘,并在此贴出网盘的公开链接">
+											</div>
+											<div class="form-group">
+												<div>
+													<label for="attach" class="form-label">项目文件</label> <span
+														class="fileinput-button file-button"> <span>+
+															添加附件</span> <input class="fileinput" type="file" name="files[]"
+														data-url="/api/upload" multiple="">
+													</span> <label class="support-format"> 支持 jpg, png, pdf,
+														ppt, zip, doc, rar, xlsx 等文件格式, 文件大小必须小于 20MB </label>
+												</div>
+												<div class="file-list"></div>
+											</div>
+
+											<div class="form-group">
+												<button class="save-button cursor">保存</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="tooltip-examples" style="display: none">
+								<div id="support-format-example">jpg、png、pdf
+									、ppt、zip、doc、rar、xlsx ...</div>
+							</div>
+
+							<div class="exp-list">
+
+								<div class="exp-item border-radius" data-id="109478">
+									<div class="exp-header">
+										<div class="exp-title">
+											<span>fenbi</span> <span>2018年08月11日 - 2018年08月18日</span>
+										</div>
+
+										<div class="exp-button">
+											<button class="exp-edit">编辑</button>
+											<button class="exp-delete"
+												data-url="/api/userinfo/project-exp/del/109478">删除</button>
+										</div>
+									</div>
+									<div class="exp-body">
+										<div class="exp-detail clearfix">
+											<div class="exp-label">项目类型</div>
+											<div class="exp-content">Web 网站</div>
+										</div>
+										<div class="exp-detail clearfix">
+											<div class="exp-label">项目描述</div>
+											<div class="exp-content">直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站直播课程网站</div>
+										</div>
+										<div class="exp-detail clearfix">
+											<div class="exp-label">行业</div>
+											<div class="exp-content">教育,爬虫,旅游 O2O</div>
+										</div>
+										<div class="exp-detail clearfix">
+											<div class="exp-label">我的职责</div>
+											<div class="exp-content">后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发后端开发</div>
+										</div>
+										<div class="exp-detail clearfix">
+											<div class="exp-label">展示链接</div>
+											<div class="exp-content">
+												<a href="https://codemart.com/user/fenbi.com">fenbi.com</a>
+											</div>
+										</div>
+										<div class="exp-detail clearfix">
+											<div class="exp-label">项目文件</div>
+											<div class="exp-content">无</div>
+										</div>
+									</div>
+									<div class="exp-modal" style="display: none;">
+										<div class="modal-wrapper">
+											<div class="modal-dialog">
+												<span class="close cursor" style="float: right;"><i
+													class="fa fa-remove"></i></span>
+												<div class="title">项目经验</div>
+
+												<form class="modal-content" style="margin-bottom: 0;"
+													onsubmit="return false;">
+													<div class="form-group">
+														<label for="project_name" class="form-label">项目名称
+															*</label> <input type="text" name="project_name"
+															id="project_name" class="full-input" value="fenbi">
+													</div>
+													<div class="form-group">
+														<label for="project_type" class="form-label">项目类型
+															*</label> <select class="full-input selectBox"
+															name="project_type" id="project_type" value="1"
+															style="display: none;">
+															<option value="">请选择</option>
+															<option selected="" value="1">Web 网站</option>
+															<option value="2">移动应用 APP</option>
+															<option value="3">微信开发</option>
+															<option value="4">HTML5 应用</option>
+															<option value="5">其他</option>
+														</select> <a class="selectBox full-input selectBox-dropdown"
+															title="" tabindex="0"
+															style="width: 0px; display: inline-block;"><span
+															class="selectBox-label" style="width: 0px;">Web 网站
+														</span><span class="selectBox-arrow"></span></a>
+													</div>
+													<div class="form-group">
+														<label for="" class="form-label">项目周期 * </label>
+														<div name="start_time" class="date-input"
+															data-pmu-date="2018-08-11">2018-08-11</div>
+														<span class="help-text"> — </span>
+														<div name="finish_time" class="date-input"
+															data-pmu-date="2018-08-18">2018-08-18</div>
+														<input type="checkbox" class="i-check-box"
+															name="until_now"> <span>至今</span>
+													</div>
+													<div class="form-group">
+														<label for="industry" class="form-label multi-line">
+															行业 * </label> <input type="text" name="industry" id="industry"
+															value="14,3,6"
+															class="full-input selectize-industry selectized"
+															placeholder="请输入行业" tabindex="-1" style="display: none;">
+														<div
+															class="selectize-control full-input selectize-industry multi">
+															<div
+																class="selectize-input items full has-options has-items">
+																<div data-value="14" class="">
+																	<span class="name">教育</span>
+																</div>
+																<div data-value="3" class="">
+																	<span class="name">爬虫</span>
+																</div>
+																<div data-value="6" class="">
+																	<span class="name">旅游 O2O</span>
+																</div>
+																<input type="text" autocomplete="off" tabindex=""
+																	style="width: 4px;">
+															</div>
+															<div
+																class="selectize-dropdown multi full-input selectize-industry"
+																style="display: none; width: 100px; top: 100px; left: 0px;">
+																<div class="selectize-dropdown-content"></div>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="description" class="form-label multi-line">
+															项目描述 * </label>
+														<textarea name="description" id="description" rows="5"
+															class="full-input" placeholder="请输入您的项目描述" wrap="hard">直播课程网站直播课程网站直播</textarea>
+														<p class="help-text explain">长度 100 - 2000 字</p>
+													</div>
+													<div class="form-group">
+														<label for="duty" class="form-label multi-line">
+															我的职责 * </label>
+														<textarea name="duty" id="duty" rows="5"
+															class="full-input" placeholder="请输入您的项目经历" wrap="hard">后端开发后端开后端发后端开发</textarea>
+														<p class="help-text explain">长度 50 - 1000 字</p>
+													</div>
+													<div class="form-group">
+														<label for="link" class="form-label">展示链接</label> <input
+															type="text" name="link" id="link" class="full-input"
+															value="fenbi.com"
+															placeholder="您可以把您的作品打包上传到网盘,并在此贴出网盘的公开链接">
+													</div>
+													<div class="form-group">
+														<label for="attach" class="form-label">项目文件</label> <span
+															class="fileinput-button file-button"> <span>+
+																添加附件</span> <input class="fileinput" type="file" name="files[]"
+															data-url="/api/upload" multiple="">
+														</span> <span class="support-format">支持的附件格式</span> <i
+															class="fa fa-info-circle support-format-tooltip tooltipstered"></i>
+
+														<div class="file-list"></div>
+													</div>
+
+													<input type="hidden" name="id" value="109478">
+
+													<div class="form-group">
+														<button class="save-button cursor">保存</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+
+						<div class="skills-section">
+							<div class="skills-section-title">接单信息</div>
+							<div class="skills-section-content">
+								<div class="skills-section-helper">
+									当接单状态为“开启”，有合适您的悬赏会自动推送给您。</div>
+								<div class="skills-section-item">
+									接单状态 &nbsp;
+									
+									<div class="switcher">
+										<label class="switcher-on  active "> 开启 <input
+											type="radio" name="acceptNewRewardAllNotification"
+											value="true" checked="checked"></label> 
+										<label class="switcher-off "> 关闭 <input type="radio"
+											name="acceptNewRewardAllNotification" value="false">
+										</label>
+									</div>
+								</div>
+								
+								<div class="skills-section-item" id="off" >
+									<p>空闲时间&nbsp;*</p>
+									
+									<!-- <div class="skills-section-option inline">
+										<label>
+											<div class="iradio_square-mart" style="position: relative;">
+												<input type="radio" name="freeTime" value="0"
+													style="position: absolute; opacity: 0;">
+												<ins class="iCheck-helper"
+													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+											</div> 较少时间兼职
+										</label>
+									</div>-->
+									<div  id="workStatusArea">
+										<input type="radio" value="1" name="workStatus" id="workStatus1"/><label for="workStatus1">较少时间兼职</label>
+										<input type="radio" value="2" name="workStatus" id="workStatus2"/><label for="workStatus2">较多时间兼职</label>
+										<input type="radio" value="3" name="workStatus" id="workStatus3"/><label for="workStatus3">全职 SOHO</label>
+									</div>
+																				
+								</div>
+								
+								<div class="skills-section-buttons">
+									<button class="save-free-time">保存</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+
+		</div>
+		<footer id="mart-footer">
+			<%@include file="/page/base/martfooter.jsp" %>
+		</footer>
+	</div>
+	
+	<script src="jsmy/skill.js"></script>
+</body>
+
+</html>

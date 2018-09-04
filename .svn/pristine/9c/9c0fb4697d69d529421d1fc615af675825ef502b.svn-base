@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="zh-cn" class="layout-html-container-myzv5">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>码市 – 互联网软件外包服务平台</title>
+	<meta name="Keywords" content="Coding,码市,Coding码市,外包,软件外包,Coding源码市场,众包,云端众包,远程工作,悬赏平台,Coding悬赏平台,软件项目需求,软件开发">
+	<meta name="Description" content="码市是 Coding 推出的互联网软件外包服务平台，意在连接需求方与广大开发者。让项目的需求方快速的找到合适的开发者，完成项目开发工作。同时也帮助开发者找到合适的项目将技术变成财富。码市基于 Coding 的在线工具对项目进行管控，保障双方的利益。">
+	<meta name="apple-itunes-app" content="app-id=1048541582">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="icon" type="image/x-icon" href="https://mart.coding.net/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="https://mart.coding.net/favicon.ico">
+	<%@include file="/page/base/base.jsp"%>
+</head>
+
+<body>
+	<div id="container" style="height: 100%;">
+		<div data-reactroot="" style="height: 100%;">
+			<div class="layout-container-S5Qks">
+				<div class="layout-content-3goT6">
+					<div class="header-container-2Bn3r">
+						<div class="left-zone-2SI-U">
+							<div class="logo-2LQ-9">
+								<a href="index.jsp"><img src="img/mart-logo.png"></a>
+							</div>
+							<div class="title-2qjCL">互联网软件外包服务平台</div>
+						</div>
+						<div class="right-zone-269eP">
+							<div>
+								<div class="label-3fTyn tip-tYnkK inline-1qat6">还没注册账号？</div>
+								<a href="page/user/register.jsp">
+									<button class="button-3791w inline-NxqXU ghost-3CjNq small-2UQdV">注册</button>
+								</a>
+							</div>
+						</div>
+					</div>		
+					<div class="login-page-container-2ykTa">
+						<div class="login-page-content-3DoH4">
+							<div class="login-form-container-nCkyo">
+								<form action="UserServlet?way=login" method="post">
+									<div class="title-3Ojaf align-center-2f551">登录码市</div>
+									<input name="username"  value="${!empty param.username ?param.username:cookie.username.value }" placeholder="手机号 / 用户名 / 电子邮箱" class="input-DvJ_0 block-1EHlh margin-3EJeM">
+									<input type="password" name="password" value="${cookie.password.value }" placeholder="请输入密码" class="input-DvJ_0 block-1EHlh margin-3EJeM">									
+									<div class="label-3fTyn block-3s8f8">
+										<label class="checkbox-3Bx_n ant-checkbox-wrapper">
+											<span class="ant-checkbox ant-checkbox-checked">
+												<input type="checkbox" name="remember" class="ant-checkbox-input"  id="rem">
+												<span class="ant-checkbox-inner"></span>
+											</span>
+											<span>记住我</span>
+										</label>
+										<div class="label-3fTyn inline-1qat6 float-right-3E8nh">
+											<a href="https://www.codemart.com" target="_black" style="color: #333;">找回密码</a>
+										</div>
+									</div>
+									<input class="button-3791w button-3Vn8q block-1WyYE primary-32yiR" type="submit" value="登录"/>
+								</form>
+								
+							</div>
+						</div>
+					</div>
+					
+					<footer class="footer-2LWW8">
+						<div>
+							<div class="logo-1-SrY"><img class="icon-32G5E" src="img/mart-logo.png"></div>
+							<div class="copy-right-2mObs">Copyright © 2014-2018</div>
+						</div>
+					</footer>
+					<div style="display:none"><input type="text" value="${msg }" id="loginmsg"/></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%@include file="/page/base/errorMsg.jsp"%>
+	<!-- 联系我们 -->
+	<!-- <script  src="js/codemart-contact-us-v1.0.0.js"></script>	 -->
+	<script src="jsmy/login.js"></script>
+</body>
+
+</html>

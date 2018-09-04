@@ -1,0 +1,36 @@
+package com.fenbi.codemart.dao.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.ItemState;
+import com.fenbi.codemart.dao.BaseDao;
+import com.fenbi.codemart.dao.ItemStateDao;
+
+public class ItemStateDaoImpl extends BaseDao<ItemState> implements ItemStateDao {
+
+	@Override
+	public List<ItemState> selectItemStates() {
+		String sql = "SELECT id,name"
+				+ " FROM item_state"
+				+ " WHERE id < 4";
+		return this.getBeanList(sql);
+	}
+
+	@Override
+	public ItemState selectItemStateByItemStateId(int itemStateId) {
+		String sql = "SELECT id,name"
+				+ " FROM item_state"
+				+ " WHERE id = ?";
+		return this.getBean(sql, itemStateId);
+	}
+
+	@Override
+	public List<ItemState> getItemStates() {
+			String sql = "SELECT id,name"
+				+ " FROM item_state";
+		return this.getBeanList(sql);
+	}
+	
+	
+
+}

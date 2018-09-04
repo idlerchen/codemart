@@ -1,0 +1,8 @@
+$(function() {
+	//$("#statusarea").addClass("ant-popover-hidden");
+	$(".ant-popover-open").hover(function() {
+		$("#statusarea").removeClass("ant-popover-hidden");
+	}, function() {
+		$("#statusarea").addClass("ant-popover-hidden");
+	});
+})

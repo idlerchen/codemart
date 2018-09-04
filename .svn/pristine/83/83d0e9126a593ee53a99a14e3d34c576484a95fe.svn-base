@@ -1,0 +1,58 @@
+package com.fenbi.codemart.servlet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fenbi.codemart.bean.Apply;
+import com.fenbi.codemart.bean.Item;
+import com.fenbi.codemart.bean.User;
+import com.fenbi.codemart.service.ApplyService;
+import com.fenbi.codemart.service.DeveloperService;
+import com.fenbi.codemart.service.ItemService;
+import com.fenbi.codemart.service.impl.ApplyServiceImpl;
+import com.fenbi.codemart.service.impl.DeveloperServiceImpl;
+import com.fenbi.codemart.service.impl.ItemServiceImpl;
+
+public class ApplyServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	public void saveApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = (User) request.getSession().getAttribute("loginUser");
+		int itemid = Integer.valueOf(request.getParameter("itemid"));
+		DeveloperService ds = new DeveloperServiceImpl();
+		ApplyService as = new ApplyServiceImpl();
+		int developerId = ds.getDeveloperByUserId(user.getId()).getId();
+		boolean createApply = as.createApply(new Apply(itemid,developerId,0));
+		
+		if(createApply) {
+			request.getRequestDispatcher("ApplyServlet?way=getMyApply").forward(request, response);
+		}
+		
+	}
+	
+	
+	public void getMyApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = (User) request.getSession().getAttribute("loginUser");
+		DeveloperService ds = new DeveloperServiceImpl();
+		ApplyService as = new ApplyServiceImpl();
+		ItemService is = new ItemServiceImpl();
+
+		int developerId = ds.getDeveloperByUserId(user.getId()).getId();
+		List<Apply> myApply = as.getApplysByDeveloperId(developerId);
+		List<Item> myitems	= new ArrayList<>();
+		for(Apply a:myApply) {
+			Item item = is.selectItemByItemId(a.getItemId());
+			myitems.add(item);
+		}
+		request.setAttribute("myitems", myitems);
+		request.getRequestDispatcher("/page/myitem/myJointProjects.jsp").forward(request, response);
+	}
+
+}

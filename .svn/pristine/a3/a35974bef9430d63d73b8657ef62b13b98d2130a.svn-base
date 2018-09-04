@@ -1,0 +1,21 @@
+$(".option-list-1hCsC>div").click(function(t){
+	$(t.currentTarget).addClass("active-2xGe9");
+	$(t.currentTarget).siblings().removeClass("active-2xGe9");
+	if($(t.currentTarget).attr("data-typeid")){
+		var type = $(t.currentTarget).attr("data-typeid");
+		window.location = "ItemServlet?way=getItemListBytype&itemtype="+type;
+	}
+	if($(t.currentTarget).attr("data-stateid")){
+		var state = $(t.currentTarget).attr("data-stateid");
+		window.location = "ItemServlet?way=getItemListBystate&itemstate="+state;
+	}
+	if($(t.currentTarget).attr("data-roleid")){
+		var role = $(t.currentTarget).attr("data-roleid");
+		window.location = "ItemServlet?way=getItemListByrole&itemrole="+role;
+	}
+})
+
+$(".fa.fa-search").click(function(){
+	var select = $(".input-DvJ_0").val();
+	window.location = "ItemServlet?way=getItemListByname&itemname="+select;
+})

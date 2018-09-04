@@ -1,0 +1,4 @@
+$(function(){
+	var id = $(".content-wrapper-Ssu-q").attr("data-itemid");
+	
+})

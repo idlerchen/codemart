@@ -1,0 +1,86 @@
+package com.fenbi.codemart.bean;
+
+import java.util.Date;
+
+/**
+ * 申请信息的实体类，封装apply表的信息
+ *
+ */
+public class Apply {
+
+	private int id;
+	private int itemId;
+	private int developerId;
+	private int state;
+	private String note;
+	private Date createTime;
+
+	public Apply() {
+		super();
+	}
+
+	public Apply(int id, int itemId, int developerId, int state, String note, Date createTime) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.developerId = developerId;
+		this.state = state;
+		this.note = note;
+		this.createTime = createTime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+
+	public int getDeveloperId() {
+		return developerId;
+	}
+
+	public void setDeveloperId(int developerId) {
+		this.developerId = developerId;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Apply [id=" + id + ", itemId=" + itemId + ", developerId=" + developerId + ", state=" + state
+				+ ", note=" + note + "]";
+	}
+
+}

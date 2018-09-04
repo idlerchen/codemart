@@ -1,0 +1,180 @@
+$(function(){	
+	//页面加载将下拉框加载， +如果是修改的回显，选中数据库中已有的选项
+	var u_industry = $("#getindustry").attr("data-industry");
+	console.log(u_industry);
+	$.get("ItemServlet",
+			{"way":"getIndustrys"},function(response){
+				if(response.code == 1){
+					var industrys = response.industrys;
+					$.each(industrys,function(i,industry){	
+						$("#industry").append("<option value='"+industry.id+"'>"+industry.name+"</option>");
+					})	
+				}
+				if(u_industry){
+					$("#industry option[value='"+u_industry+"']").attr("selected",true);
+				}
+			}
+	)
+	var u_type = $("#gettype").attr("data-type");
+	console.log(u_type);
+	if(u_type){
+		$("[name=itemtype][value='"+u_type+"']").attr("checked",true);
+	}
+	var u_role = $("#getrole").attr("data-role");
+	console.log(u_role);
+	if(u_role){
+		$("[name=roleId][value='"+u_role+"']").attr("checked",true);
+	}
+})
+//提交校验
+var regexTel = /^((1[3,5,6,7,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/;
+var type = null;
+var roleId = null;
+var name = "";
+var industryId = null;
+var money = null;
+var period = null;
+var detail = null;
+var linkMan = $("#linkMan").val();
+var linkEmail = $("#linkEmail").val();
+var linkTelephone = $("#linkTelephone").val();
+//项目类型
+$(".type-2izPn").click(function(){
+	//选中的开发类型显示边框	
+	$(this).addClass("current-mtEW0");
+	//其他类型取消边框
+	$(this).siblings().removeClass("current-mtEW0");
+	//获取选中的开发类型的值
+	type = $(this).children().children().last().val();
+});
+//角色
+$(".developer-checkbox-wHeLc").change(function(){
+	//选择角色，将其他选项清空。这个傻屌网站既然要单选搞个多选框干毛
+	$(this).siblings().children().children().children().removeAttr("checked");
+	roleId = $(this).siblings().children().children().children().val();
+})
+//项目名称
+$(".input-DvJ_0.block-1EHlh").change(function(){
+	name = $(this).val();
+})	
+//项目行业
+//选中项目行业时字体颜色改变
+$("#industry").click(function(){
+	$(this).css("color","#333");
+})
+$("#industry").change(function(){
+	industryId = $(this).val();
+})
+//项目预算
+$("#moneyinput").change(function(){
+	money = $(this).val();
+})
+
+//期望交付周期
+$("#periodinput").change(function(){
+	period = $(this).val();
+})
+
+//项目描述
+$("#detailinput").change(function(){
+	detail = $(this).val();
+})	
+//姓名
+$("#linkMan").change(function(){
+	linkMan = $(this).val();
+})
+//邮箱
+$("#linkEmail").change(function(){
+	linkEmail = $(this).val();
+})
+//手机
+$("#linkTelephone").change(function(){
+	linkTelephone = $(this).val();
+})
+
+function validate(){
+	//alert(type+"..."+roleId+"..."+name+"..."+industryId+"..."+money+"..."+period+"..."+detail+"..."+linkMan+"..."+linkEmail+"..."+linkTelephone);
+	if(type==null){
+		$(".toast-message").html("请选择开发类型");
+		errormsg();	
+		return false;
+	}else if(roleId == null){
+		$(".toast-message").html("请选择开发者类型");
+		errormsg();	
+		return false;
+	}else if(name == null || name =="" ){
+		$(".toast-message").html("项目名称不可为空");
+		errormsg();	
+		return false;
+	}else if(industryId == null){
+		$(".toast-message").html("请选择行业");
+		errormsg();	
+		return false;
+	}else if(money == null||money<=1000){
+		$(".toast-message").html("项目金额必须大于 1000");
+		errormsg();	
+		return false;
+	}else if(period == null){
+		$(".toast-message").html("交付周期不可为空");
+		errormsg();	
+		return false;
+	}else if(detail == null){
+		$(".toast-message").html("项目描述不可为空");
+		errormsg();	
+		return false;
+	}else if(linkMan == null||linkMan == ""){
+		$(".toast-message").html("姓名不可为空");
+		errormsg();	
+		return false;
+	}else if(linkEmail == null||linkEmail ==""){
+		$(".toast-message").html("邮箱不可为空");
+		errormsg();	
+		return false;
+	}else if(linkTelephone == null||linkTelephone==""||!regexTel.test(linkTelephone)){
+		$(".toast-message").html("请正确填入手机");
+		errormsg();	
+		return false;
+	}else{
+		return true;
+	}
+	
+}
+//错误信息动画
+function errormsg(){	
+	$(".toast.toast-error").show(1000);
+	$(".toast.toast-error").css("display","block");
+	setTimeout(function(){
+		$(".toast.toast-error").hide(1800);
+	},3200);	
+}
+
+//查看范例
+$(function(){
+	var status = 0;
+	$(".open-o4Qdj").click(function(){
+		if(status==0){
+			status=1;
+			$(this).parent().siblings().css("display","");			
+		}else{
+			status=0;
+			$(this).parent().siblings().css("display","none");
+		}
+	});
+})
+
+
+
+
+/*$(function(){
+	
+	$("#agree").change(function(){
+		var obj = $("#submitbutton:checked");
+		alert(obj);
+		if(obj){
+			$("#submitbutton").removeAttr("disabled");			
+		}else{
+			$("#submitbutton").attr("disabled","disabled");
+		}
+	});
+})*/
+

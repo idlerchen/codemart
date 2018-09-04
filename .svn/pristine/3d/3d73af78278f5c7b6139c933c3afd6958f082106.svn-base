@@ -1,0 +1,39 @@
+$(".tab-header>div").click(function(t){
+	$(t.currentTarget).addClass("active");
+	$(t.currentTarget).siblings().removeClass("active");
+	var ta = $(t.currentTarget).attr("tab");
+	$(".tab-body").removeClass("active");
+	$(".tab-body[tab='"+ta+"']").addClass("active");
+})
+
+$(".switcher>label").click(function(t){
+	
+	$(t.currentTarget).addClass("active");
+	$(t.currentTarget).siblings().removeClass("active");
+	var text = $(t.currentTarget).text();
+	if(text.replace(/\s+/g,"") == "关闭"){
+		$("#off").css("display","none");
+	}else{
+		$("#off").css("display","block");
+	}
+	
+})
+
+$(function(){
+	$.get("DeveloperServlet",
+		{"way":"getDeveloper"},
+		function(response){
+				var roles = response.roles;
+				var workStatus = response.workStatus;
+				$.each(roles,function(i){
+					$("#role-skill-tab-box input[value='" + i + "']").attr("checked","checked");
+				})
+				if(workStatus == 0){
+					$("#switcher input[value=false]").attr("checked","checked");
+				}else{
+					$("#switcher input[value=true]").attr("checked","checked");
+				}
+		},
+		"json"
+	);
+})

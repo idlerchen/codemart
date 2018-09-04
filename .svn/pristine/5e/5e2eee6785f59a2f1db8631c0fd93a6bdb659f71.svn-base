@@ -1,0 +1,66 @@
+$(".tab-header>div").click(function(t){
+	$(t.currentTarget).addClass("active");
+	$(t.currentTarget).siblings().removeClass("active");
+	var ta = $(t.currentTarget).attr("tab");
+	$(".tab-body").removeClass("active");
+	$(".tab-body[tab='"+ta+"']").addClass("active");
+})
+
+$(".switcher>label").click(function(t){
+	
+	$(t.currentTarget).addClass("active");
+	$(t.currentTarget).siblings().removeClass("active");
+	var text = $(t.currentTarget).text();
+	if(text.replace(/\s+/g,"") == "关闭"){
+		$("#off").css("display","none");
+	}else{
+		$("#off").css("display","block");
+	}
+	
+})
+
+$(function(){
+	$.get("DeveloperServlet",
+		{"way":"getDeveloper"},
+		function(response){
+				var roles = response.roles;
+				var workStatus = response.workStatus;
+				console.log(roles+"--"+workStatus);
+				$.each(roles,function(i,role){
+					console.log(role);
+					$("[name=role][value='" + role + "']").attr("checked","checked");
+				})
+				if(workStatus == 0){//关闭
+					$(".reward-status").text("接单状态: 关闭");
+					$(".switcher>label:eq(1)").addClass("active");
+					$(".switcher>label:eq(0)").removeClass("active");
+					$("#off").css("display","none");
+				}else{//开启
+					$(".reward-status").text("接单状态: 开启");
+					$(".switcher>label:eq(0)").addClass("active");
+					$(".switcher>label:eq(1)").removeClass("active");
+					$("#off").css("display","block");
+					$("[name=workStatus][value='"+workStatus+"']").attr("checked","checked");
+					
+				}
+		},
+		"json"
+	);
+})
+
+//错误信息动画
+$(function(){
+	var msg = $("#myMsg").attr("data-msg");
+	if(msg== "1"){
+		$(".toast-message").html("请先注册开发者信息");
+		errormsg();	
+	}
+})
+
+function errormsg(){	
+	$(".toast.toast-error").show(1000);
+	$(".toast.toast-error").css("display","block");
+	setTimeout(function(){
+		$(".toast.toast-error").hide(1800);
+	},3200);	
+}

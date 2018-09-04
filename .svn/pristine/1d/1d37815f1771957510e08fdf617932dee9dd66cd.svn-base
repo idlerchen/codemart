@@ -1,0 +1,55 @@
+package com.fenbi.codemart.service.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Apply;
+import com.fenbi.codemart.dao.ApplyDao;
+import com.fenbi.codemart.dao.impl.ApplyDaoImpl;
+import com.fenbi.codemart.service.ApplyService;
+
+public class ApplyServiceImpl implements ApplyService {
+
+	ApplyDao applyDao = new ApplyDaoImpl();
+	
+	@Override
+	public boolean createApply(Apply apply) {
+		return applyDao.createApply(apply) > 0;
+	}
+
+	@Override
+	public List<Apply> getApplysByItemId(int itemId) {
+		return applyDao.selectApplysByItemId(itemId);
+	}
+
+	@Override
+	public List<Apply> getApplysByDeveloperId(int developerId) {
+		return applyDao.selectApplysByDeveloperId(developerId);
+	}
+
+	@Override
+	public Apply getApplyByApplyId(int applyid) {
+		return applyDao.selectApplyByApplyId(applyid);
+	}
+
+	@Override
+	public boolean updateStateByApplyId(int state, int applyId) {
+		return applyDao.updateStateByApplyId(state, applyId) > 0;
+	}
+
+	@Override
+	public boolean updateNoteByApplyId(String note, int applyId) {
+		return applyDao.updateNoteByApplyId(note, applyId) > 0;
+	}
+
+	@Override
+	public int countApplysByItemId(int itemId) {
+		return applyDao.selectApplysByItemId(itemId).size();
+	}
+
+	@Override
+	public boolean selectApplyByDeveloperAndItem(int developerId, int itemId) {
+		
+		return applyDao.selectApplysByDeveloperAndItem(developerId, itemId) != null;
+	}
+
+}

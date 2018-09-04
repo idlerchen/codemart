@@ -1,0 +1,312 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>码市 – 互联网软件外包服务平台</title>
+	<meta name="Keywords" content="Coding,码市,Coding码市,外包,软件外包,Coding源码市场,众包,云端众包,远程工作,悬赏平台,Coding悬赏平台,软件项目需求,软件开发">
+	<meta name="Description" content="码市是 Coding 推出的互联网软件外包服务平台，意在连接需求方与广大开发者。让项目的需求方快速的找到合适的开发者，完成项目开发工作。同时也帮助开发者找到合适的项目将技术变成财富。码市基于 Coding 的在线工具对项目进行管控，保障双方的利益。">
+	<meta name="apple-itunes-app" content="app-id=1048541582">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="icon" type="image/x-icon" href="https://mart.coding.net/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="https://mart.coding.net/favicon.ico">	
+	<%@include file="/page/base/base.jsp"%>
+</head>
+
+<body>
+	<div id="container" style="height: 100%;">
+		<div data-reactroot="" style="height: 100%;">
+			<!-- react-empty: 3 -->
+			<div class="container-1weyJ">
+				<%@include file="/page/base/header.jsp"%>
+				<div class="content-wrapper-Ssu-q">
+					<div class="projects-container-29nDe">
+						<div class="projects-content-IMdl0">
+							<div class="left-container-1dwXK"><span><div class="tip-3pB2E red-2ShMH shadow-2QXtv"><div>根据税务局要求，2018 年 6 月 1 日起码市不再支持开具发票，仅提供资金托收托付服务。如有开票要求请于 2018 年 5 月 30 日前提交或与开发服务商协商开票。</div></div></span>
+								<!-- react-empty: 79 -->
+								<div class="project-filter-container-1IbUA">
+									<div class="project-filter-content-wXMUD">
+										<div class="expand-option-container-3au-l filter-item-3xeyP">
+											<div class="expand-option-content-uXrms">
+												<div class="label-2vbiM">项目类型：</div>
+												<div class="option-content-1ddA1">
+													<div class="option-list-1hCsC">
+														<div class="option-1QeLJ active-2xGe9">全部</div>
+														<c:forEach items="${itemType }" var="itemtype">
+															<div class="option-1QeLJ" id="${itemtype.id }">${itemtype.name }</div>
+														</c:forEach>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="expand-option-container-3au-l filter-item-3xeyP">
+											<div class="expand-option-content-uXrms">
+												<div class="label-2vbiM">项目进度：</div>
+												<div class="option-content-1ddA1">
+													<div class="option-list-1hCsC">
+														<div class="option-1QeLJ active-2xGe9">全部</div>
+														<c:forEach items="${itemState }" var="itemstate">
+															<div class="option-1QeLJ" id="${itemstate.id }">${itemstate.name }</div>
+														</c:forEach>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="expand-option-container-3au-l filter-item-3xeyP">
+											<div class="expand-option-content-uXrms">
+												<div class="label-2vbiM">项目角色：</div>
+												<div class="option-content-1ddA1">
+													<div class="option-list-1hCsC">
+														<div class="option-1QeLJ active-2xGe9">全部</div>
+														<c:forEach items="${roleType }" var="roletype">
+															<div class="option-1QeLJ" id="${roletype.id }">${roletype.name }</div>
+														</c:forEach>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="list-container--j7Ng">
+									<div class="list-content-3dI_h">
+										<header class="list-header-2Sc6-">
+											<span class="search-3F9bW">
+												<input class="input-DvJ_0">
+												<span class="fa fa-search"></span>
+											</span>
+										</header>
+										<div><span style="display: none;"></span>
+											<!--一个项目 -->
+											<c:forEach items="${itemList }" var="item">
+											<div class="item-container-2Txk_">
+												<div class="item-content--DS7m">
+													<div class="icon-content-3GTl0">
+														<a href="ItemServlet?way=getItemDetail&itemId=${item.id }" target="_blank">
+															<img src="img/black.png">
+															<img class="cover-3P1oG" src="img/projectImg4.png">
+														</a>
+													</div>
+													<div class="body-content-2y6ks">
+														<div class="info-body-34ARl">
+															<div class="title-2q5sH">
+																<a href="ItemServlet?way=getItemDetail&itemId=${item.id }" target="_blank" class="name-UUeBS">
+																<span class="no-3TiXA"><!-- react-text: 226 -->NO.<!-- react-text: 227 -->${item.id }</span>
+																<span class="name-UUeBS"><span class="">${item.name }</span></span>
+																<span class="status-3kUbT recruiting">${item.stateName }</span></a><span class="price-2qRFd">
+																<span class="bargain-1QpRQ">可议价</span><span class="money-LMlJK"><span>¥${item.money }</span></span>
+																</span>
+															</div>
+															<div>
+																<div class="label-2n6KW"><label>招募：</label><span>${item.roleName }</span></div>
+																<div class="label-2n6KW"><label>类型：</label><span>${itemTypeName }</span></div>
+																<div class="label-2n6KW"><label>周期：</label><span>7天</span></div>
+															</div>
+															<!--时间在servlet中获取到后，与当下时间确认间隔，再封装进对象里传过来渲染  -->
+															<div class="time-2b2Sj"><span>>1 小时前发布</span>|<span>${item.applicantNum }人报名</span></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											</c:forEach>
+											<!--在这里结束 -->
+											<!-- <div class="item-container-2Txk_">
+												<div class="item-content--DS7m">
+													<div class="icon-content-3GTl0">
+														<a href="https://codemart.com/project/15965" target="_blank"><img src="img/black.png"><img class="cover-3P1oG" src="img/projectImg6.png"></a>
+													</div>
+													<div class="body-content-2y6ks">
+														<div class="info-body-34ARl">
+															<div class="title-2q5sH">
+																<a href="https://codemart.com/project/15965" target="_blank" class="name-UUeBS"><span class="no-3TiXA">react-text: 266NO.react-text: 26715965</span><span class="name-UUeBS"><span class="">同城购物小程序。【后续开发App】</span></span><span class="status-3kUbT recruiting">招募中</span></a><span class="price-2qRFd"><span class="bargain-1QpRQ">可议价</span><span class="money-LMlJK"><span>¥10,000</span></span>
+																</span>
+															</div>
+															<div>
+																<div class="label-2n6KW"><label>招募：</label><span>开发团队</span></div>
+																<div class="label-2n6KW"><label>类型：</label><span>小程序</span></div>
+																<div class="label-2n6KW"><label>周期：</label><span>20天</span></div>
+															</div>
+															<div class="time-2b2Sj"><span>3 小时前发布</span>|<span>7人报名</span></div>
+														</div>
+													</div>
+												</div>
+											</div>		
+											<div class="item-container-2Txk_">
+												<div class="item-content--DS7m">
+													<div class="icon-content-3GTl0">
+														<a href="https://codemart.com/project/15954" target="_blank">
+															<img src="img/black.png">
+															<img class="cover-3P1oG" src="img/projectImg4.png"></a>
+													</div>
+													<div class="body-content-2y6ks">
+														<div class="info-body-34ARl">
+															<div class="title-2q5sH">
+																<a href="https://codemart.com/project/15954" target="_blank" class="name-UUeBS">
+																	<span class="no-3TiXA">react-text: 463NO.react-text: 46415954</span>
+																	<span class="name-UUeBS">
+																		<span class="">JAVA生成印章图片</span>
+																	</span>
+																	<span class="status-3kUbT recruiting">招募中</span>
+																</a>
+																<span class="price-2qRFd">
+																	<span class="money-LMlJK">
+																		<span>¥1,000</span>
+																	</span>
+																</span>
+															</div>
+															<div>
+																<div class="label-2n6KW"><label>招募：</label><span>后端开发</span></div>
+																<div class="label-2n6KW"><label>类型：</label><span>其他</span></div>
+																<div class="label-2n6KW"><label>周期：</label><span>2天</span></div>
+															</div>
+															<div class="time-2b2Sj"><span>react-text: 4851 天前react-text: 486发布</span>
+																react-text: 487|
+																<span>react-text: 4898react-text: 490 人报名</span></div>
+														</div>
+													</div>
+												</div>
+											</div>	
+											<div class="item-container-2Txk_">
+												<div class="item-content--DS7m">
+													<div class="icon-content-3GTl0">
+														<a href="https://codemart.com/project/15936" target="_blank">
+															<img src="img/black.png">
+															<img class="cover-3P1oG" src="img/projectImg4.png">
+														</a>
+													</div>
+													<div class="body-content-2y6ks">
+														<div class="info-body-34ARl">
+															<div class="title-2q5sH">
+																<a href="https://codemart.com/project/15936" target="_blank" class="name-UUeBS">
+																	<span class="no-3TiXA">NO.15936</span>
+																	<span class="name-UUeBS">
+																		<span class="">微信红包透视</span>
+																	</span>
+																	<span class="status-3kUbT recruiting">招募中</span>
+																</a>
+																<span class="price-2qRFd">
+																	<span class="bargain-1QpRQ">可议价</span>
+																	<span class="money-LMlJK">
+																		<span>¥10,000</span>
+																	</span>
+																</span>
+															</div>
+															<div>
+																<div class="label-2n6KW"><label>招募：</label><span>开发团队</span></div>
+																<div class="label-2n6KW"><label>类型：</label><span>其他</span></div>
+																<div class="label-2n6KW"><label>周期：</label><span>20天</span></div>
+															</div>
+															<div class="time-2b2Sj">
+																<span>3 天前发布</span>|
+																<span>0 人报名</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div> -->
+										</div>
+										<!-- 换页功能，有空再做 -->
+										<!-- <footer>
+											<ul class="pagination-28Bic  clearfix">
+												<li class="previous disabled">
+													<a><i class="fa fa-chevron-left"></i></a>
+												</li>
+												<li class="active">
+													<a>1</a>
+												</li>
+												<li>
+													<a>2</a>
+												</li>
+												<li>
+													<a>3</a>
+												</li>
+												<li>
+													<a>4</a>
+												</li>
+												<li class="break">...</li>
+												<li>
+													<a>84</a>
+												</li>
+												<li class="next">
+													<a><i class="fa fa-chevron-right"></i></a>
+												</li>
+											</ul>
+										</footer> -->
+									</div>
+								</div>
+							</div>
+							<div class="right-container-1Exdz">
+								<div class="sticky-outer-wrapper">
+									<div class="sticky-inner-wrapper" style="position: relative; top: 0px;">			
+										<!--右侧指南栏-->	
+										<div class="panel-container-2PyaB">
+											<div>
+												<!--需求方登录时-->
+												<c:if test="${sessionScope.loginUser.userType == '1' }">
+													<div class="panel-header-1dfEW">需求方工作指南
+														<a class="more-2JSP3" href="/help/customer/guide" target="_blank">了解更多</a>
+													</div>
+													<div class="panel-body-2QF2D">
+														<div>
+															<ul class="guide-2w0Fk">
+																<li><b><i>1</i></b>发布项目需求</li>
+																<li><b><i>2</i></b>招募开发者</li>
+																<li><b><i>3</i></b>确认合作开发者</li>
+																<li><b><i>4</i></b>预付款项启动项目</li>
+																<li><b><i>5</i></b>阶段验收支付</li>
+															</ul>
+															<a href="page/item/demandIssue.jsp">
+																<button class="button-3791w publish-2ReEl block-1WyYE primary-32yiR">立即发布需求</button>
+															</a>
+														</div>
+													</div>
+												</c:if>
+												<!--开发者登录时和默认时-->
+												<c:if test="${sessionScope.loginUser.userType != '1' }">
+													<div class="panel-header-1dfEW">开发者工作指南	
+														<a class="more-2JSP3" href="https://codemart.com/help/developer/guide" target="_blank">了解更多</a>
+													</div>
+													<div class="panel-body-2QF2D">
+														<ul class="guide-2w0Fk">
+															<li><b><i>1</i></b>注册并认证身份</li>
+															<li><b><i>2</i></b>报名参与项目</li>
+															<li><b><i>3</i></b>确认合作需求方</li>
+															<li><b><i>4</i></b>项目阶段划分并启动</li>
+															<li><b><i>5</i></b>阶段交付收款</li>
+														</ul>
+													</div>
+												</c:if>
+												<!---->
+												
+											</div>
+										</div>
+										<!-- react-empty: 153 -->
+										<div class="panel-container-2PyaB">
+											<div>
+												<div class="panel-body-2QF2D">
+													<div class="qr-svLhA">
+														<span><img alt="App 接单更方便快捷，赶快下载吧" src="img/Qcode.png"></span>
+														<span class="text-cAQdr">App 接单更方便快捷，赶快下载吧</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<a id="zone-bottom"></a>
+						</div>
+					</div>
+				</div>	
+				<%@include file="/page/base/footer.jsp"%>		
+			</div>
+		</div>
+	</div>
+	<!-- 联系我们 -->
+	<script async="" src="js/codemart-contact-us-v1.0.0.js"></script>
+
+</body>
+
+</html>

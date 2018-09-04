@@ -1,0 +1,48 @@
+
+
+$(".type-2izPn").click(function(){
+	//选中的开发类型显示边框	
+	$(this).addClass("current-mtEW0");
+	//其他类型取消边框
+	$(this).siblings().removeClass("current-mtEW0");
+	//获取选中的开发类型的值
+	var type = $(this).children().children().last().val();
+});
+
+
+$(".developer-checkbox-wHeLc").change(function(){
+	//选择角色，将其他选项清空。这个傻屌网站既然要单选搞个多选框干毛
+	$(this).siblings().children().children().children().removeAttr("checked");
+})
+
+//查看范例
+$(function(){
+	var status = 0;
+	$(".open-o4Qdj").click(function(){
+		if(status==0){
+			status=1;
+			$(this).parent().siblings().css("display","");			
+		}else{
+			status=0;
+			$(this).parent().siblings().css("display","none");
+		}
+	});
+})
+
+/*$(function(){
+	
+	$("#agree").change(function(){
+		var obj = $("#submitbutton:checked");
+		alert(obj);
+		if(obj){
+			$("#submitbutton").removeAttr("disabled");			
+		}else{
+			$("#submitbutton").attr("disabled","disabled");
+		}
+	});
+})*/
+
+//点击发布时校验
+/*$("button-3791w primary-32yiR").click(function(){
+	
+})*/

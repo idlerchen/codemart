@@ -1,0 +1,35 @@
+$(function(){
+	if(!$("#checktype div:gt(0)").hasClass("active-2xGe9")){
+		$("#checktype div:eq(0)").addClass("active-2xGe9");
+	}
+	if(!$("#checkstate div:gt(0)").hasClass("active-2xGe9")){
+		$("#checkstate div:eq(0)").addClass("active-2xGe9");
+	}
+	if(!$("#checkrole div:gt(0)").hasClass("active-2xGe9")){
+		$("#checkrole div:eq(0)").addClass("active-2xGe9");
+	}
+})
+$(".option-list-1hCsC>div").click(function(t){
+	if($(t.currentTarget).hasClass("all")){//是全部，发送请求
+		window.location = "ItemServlet?way=getAllItems";
+	}else{//不是全部，移除全部的高亮
+		$(t.currentTarget).parent().first().removeClass("active-2xGe9");
+	}
+	if($(t.currentTarget).attr("data-typeid")){
+		var type = $(t.currentTarget).attr("data-typeid");
+		window.location = "ItemServlet?way=getItemListBytype&itemtype="+type;
+	}
+	if($(t.currentTarget).attr("data-stateid")){
+		var state = $(t.currentTarget).attr("data-stateid");
+		window.location = "ItemServlet?way=getItemListBystate&itemstate="+state;
+	}
+	if($(t.currentTarget).attr("data-roleid")){
+		var role = $(t.currentTarget).attr("data-roleid");
+		window.location = "ItemServlet?way=getItemListByrole&itemrole="+role;
+	}
+})
+
+$(".fa.fa-search").click(function(){
+	var select = $(".input-DvJ_0").val();
+	window.location = "ItemServlet?way=getItemListByname&itemname="+select;
+})

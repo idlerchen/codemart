@@ -1,0 +1,17 @@
+$(function(){	
+	var status = 0 ;
+	$("#statusarea").addClass("ant-popover-hidden");	
+		$(".ant-popover-open").click(function(){
+			if(status==0){
+				$("#statusarea").removeClass("ant-popover-hidden");		
+				status=1;
+			}else if(status==1){
+				$("#statusarea").addClass("ant-popover-hidden");
+				status=0;
+			}
+		});
+})  
+
+
+
+

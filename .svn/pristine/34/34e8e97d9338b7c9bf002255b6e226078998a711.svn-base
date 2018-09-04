@@ -1,0 +1,131 @@
+package com.fenbi.codemart.dao;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Item;
+
+public interface ItemDao {
+
+	/**
+	 * 创建一条项目信息并存入数据库
+	 * 
+	 * @param item
+	 *            封装有项目信息的项目对象
+	 * @return 返回存入数据库的信息条数
+	 */
+	public int createItem(Item item);
+
+	/**
+	 * 查询所有项目信息
+	 * 
+	 * @return 所有项目信息对象的List集合
+	 */
+	public List<Item> selectItemList();
+
+	/**
+	 * 根据用户id查询该用户的所有项目的信息
+	 * 
+	 * @param userId
+	 *            用户id
+	 * @return 该用户的所有项目的List集合
+	 */
+	public List<Item> selectItemByUserId(int userId);
+
+	/**
+	 * 根据项目id查询对应的项目的信息
+	 * 
+	 * @param itemId
+	 *            项目id
+	 * @return 项目id对应的项目对象
+	 */
+	public Item selectItemByItemId(int itemId);
+	
+	/**
+	 * 根据项目类型查询对应的项目的信息
+	 * 
+	 * @param itemType
+	 *            项目类型id
+	 * @return 项目类型对应的项目列表
+	 */
+	public List<Item> selectItemByItemType(int itemtype);
+	
+	/**
+	 * 根据项目状态查询对应的项目列表的信息
+	 * 
+	 * @param state
+	 *            项目状态state
+	 * @return 项目状态对应的项目列表
+	 */
+	public List<Item> selectItemByState(int state);
+	
+	/**
+	 * 根据角色查询对应的项目列表的信息
+	 * 
+	 * @param roleId
+	 *            角色类型roleId
+	 * @return 角色类型对应的项目列表
+	 */
+	public List<Item> selectItemByRoleId(int roleId);
+		
+	/**
+	 * 根据项目名称查询对应的项目列表的信息
+	 * 
+	 * @param name
+	 *           项目名称name
+	 * @return 项目名称对应的项目列表
+	 */
+	public List<Item> selectItemByName(String name);
+	
+	/**
+	 * 更新项目信息
+	 * 
+	 * @param item
+	 *            封装更新后项目信息的项目对象
+	 * @return 返回已修改的信息条数
+	 */
+	public int updateItemInfo(Item item);
+
+	/**
+	 * 更新项目的项目状态
+	 * 
+	 * @param state
+	 *            更新后的项目状态
+	 * @param itemId
+	 *            项目id
+	 * @return 返回已修改的信息条数
+	 */
+	public int updateStateByItemId(int state, int itemId);
+
+	/**
+	 * 更新项目申请人数
+	 * 
+	 * @param applicantNum
+	 *            更新后的项目申请人数
+	 * @param itemId
+	 *            项目id
+	 * @return 返回已修改的信息条数
+	 */
+	public int addApplicantNumByItemId(int itemId);
+	
+	public int delApplicantNumByItemId(int itemId);
+
+	/**
+	 * 更新项目访问人数
+	 * 
+	 * @param viewNum
+	 *            更新后的项目访问人数
+	 * @param itemId
+	 *            项目id
+	 * @return 返回已修改的信息条数
+	 */
+	public int updateViewNunByItemId(int viewNum, int itemId);
+	
+	/***
+	 * 根据项目的状态获取我的项目列表
+	 * @param userid
+	 * @param itemId
+	 * @return
+	 */
+	public List<Item> getMyitemBystate(int userid,int stateId);
+
+}

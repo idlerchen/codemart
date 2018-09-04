@@ -1,0 +1,42 @@
+package com.fenbi.codemart.dao.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Item;
+import com.fenbi.codemart.dao.BaseDao;
+import com.fenbi.codemart.dao.ItemDao;
+
+public class ItemDaoImpl extends BaseDao<Item> implements ItemDao {
+
+	@Override
+	public int createItem(Item item) {
+		String sql = "INSERT INTO item(userid,itemtype,role_id,name,industry_id,money,period,link_man,link_email,link_telephone,refer,detail,state,applicant_num)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		return this.update(sql, item.getUserid(), item.getItemtype(), item.getRoleId(),item.getName(), item.getIndustryId(),item.getMoney(),item.getPeriod(),item.getLinkMan(),item.getLinkEmail(),item.getLinkTelephone(), item.getRefer(), item.getDetail(), item.getState(), item.getApplicantNum());
+	}
+
+	@Override
+	public List<Item> selectItemByUserId(int userId) {
+		String sql = "SELECT id,userid,itemtype,role_id roleId,name,industry_id industryId,money,period,link_man linkMan,link_email linkEmail,link_telephone linkTelephone,refer,detail,state,applicant_num applicantNum"
+				+ " FROM item"
+				+ " WHERE userid = ?";
+		return this.getBeanList(sql, userId);
+	}
+
+	@Override
+	public Item selectItemByItemId(int itemId) {
+		String sql = "SELECT id,userid,itemtype,role_id roleId,name,industry_id industryId,money,period,link_man linkMan,link_email linkEmail,link_telephone linkTelephone,refer,detail,state,applicant_num applicantNum"
+				+ " FROM item"
+				+ " WHERE id = ?";
+		return this.getBean(sql, itemId);
+	}
+
+	@Override
+	public int updateItem(Item item) {
+		String sql = "UPDATE item"
+				+ " SET itemtype = ?,role_id = ?, name = ?,industry_id = ?,money = ?,period = ?,link_man = ?,link_email = ?,link_telephone = ?,refer = ?,detail = ?,state = ?,applicant_num = ?"
+				+ " WHERE id = ?";
+		return this.update(sql, item.getItemtype(), item.getRoleId(), item.getName(), item.getIndustryId(), item.getMoney(), item.getPeriod(), item.getLinkMan(), item.getLinkEmail(), item.getLinkTelephone(), item.getRefer(), item.getDetail(), item.getState(), item.getApplicantNum());
+	}
+
+}

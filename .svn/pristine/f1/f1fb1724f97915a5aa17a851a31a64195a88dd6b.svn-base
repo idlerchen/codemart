@@ -1,0 +1,281 @@
+package com.fenbi.codemart.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+import com.fenbi.codemart.bean.Industry;
+import com.fenbi.codemart.bean.Item;
+import com.fenbi.codemart.bean.ItemState;
+import com.fenbi.codemart.bean.ItemType;
+import com.fenbi.codemart.bean.RoleType;
+import com.fenbi.codemart.bean.User;
+import com.fenbi.codemart.service.IndustryService;
+import com.fenbi.codemart.service.ItemService;
+import com.fenbi.codemart.service.RoleTypeService;
+import com.fenbi.codemart.service.impl.IndustryServiceImpl;
+import com.fenbi.codemart.service.impl.ItemServiceImpl;
+import com.fenbi.codemart.service.impl.RoleTypeServiceImpl;
+import com.fenbi.codemart.utils.WEButils;
+import com.google.gson.Gson;
+
+public class ItemServlet extends BaseServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 生成新发布的项目，存入数据库
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void saveItem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 获取请求参数，封装item项目对象
+		Item item = WEButils.param2Bean(request, new Item());
+
+		// 获取当前账户信息
+		// 设置用户id、状态、应用到项目对象中
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		item.setUserid(loginUser.getId());
+		item.setState(1);
+		item.setApplicantNum(0);
+
+		// 保存项目对象，写入数据库
+		ItemService is = new ItemServiceImpl();
+		boolean flag = is.createItem(item);
+
+		// 发布成功时，转发到“我发布的项目”
+		if (flag) {
+			request.getRequestDispatcher("ItemServlet?way=getMyItems").forward(request, response);
+		}
+	}
+
+	/**
+	 * 获取行业列表信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getIndustrys(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 解决json响应乱码
+		response.setContentType("application/json;charset=utf-8");
+
+		IndustryService is = new IndustryServiceImpl();
+		List<Industry> industrys = is.getIndustrys();
+
+		// 设置map属性集
+		HashMap<String, Object> map = new HashMap<>();
+		if (industrys != null) {
+			map.put("code", 1);
+			map.put("industrys", industrys);
+		} else {
+			map.put("code", 0);
+		}
+
+		// 将map属性集，转换成json字符串并发送给ajax
+		String jsonStr = JSON.toJSONString(map);
+		response.getWriter().print(jsonStr);
+	}
+
+	/**
+	 * 获取我发布的项目
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getMyItems(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+
+		ItemService is = new ItemServiceImpl();
+		List<Item> myItems = is.getItemByUserId(loginUser.getId());
+
+		// myItems若为空，el表达式不会输出任何值
+		request.setAttribute("myItems", myItems);
+		request.getRequestDispatcher("/page/myitem/myIssueProjects.jsp").forward(request, response);
+	}
+
+	/**
+	 * 更新项目状态
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void updateState(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 获取当前选中的itemId、要设置的state
+		String itemId = request.getParameter("itemId");
+		String state = request.getParameter("state");
+
+		ItemService is = new ItemServiceImpl();
+		is.updateStateByItemId(Integer.valueOf(state), Integer.valueOf(itemId));
+
+		// 转发，重新获取我的项目
+		request.getRequestDispatcher("ItemServlet?way=getMyItems").forward(request, response);
+	}
+
+	/**
+	 * 获取所有项目(招募中/开发中/已结束)
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getAllItems(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ItemService is = new ItemServiceImpl();
+		RoleTypeService rts = new RoleTypeServiceImpl();
+
+		List<ItemType> itemType = is.getItemTypes();
+		List<ItemState> itemState = is.getItemStates();
+		List<RoleType> roleType = rts.getRoleTypes();
+		List<Item> itemList = is.getItems();
+
+		request.setAttribute("itemType", itemType);
+		request.setAttribute("itemState", itemState);
+		request.setAttribute("roleType", roleType);
+		request.setAttribute("itemList", itemList);
+
+		request.getRequestDispatcher("/page/item/projects.jsp").forward(request, response);
+	}
+
+	/**
+	 * 根据项目id获取项目信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String itemId = request.getParameter("itemId");
+
+		ItemService is = new ItemServiceImpl();
+		Item item = is.selectItemByItemId(Integer.valueOf(itemId));
+		
+		System.out.println(item);
+		
+		request.setAttribute("item", item);
+		request.getRequestDispatcher("/page/myitem/demandUpdate.jsp").forward(request, response);
+	}
+
+	/**
+	 * 更新项目信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void updateItem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Item item = WEButils.param2Bean(request, new Item());
+
+		ItemService is = new ItemServiceImpl();
+		boolean flag = is.updateItemInfo(item);
+
+		if (flag) {
+			request.getRequestDispatcher("ItemServlet?way=getMyItems").forward(request, response);
+		} else {
+			request.getRequestDispatcher("ItemServlet?way=getItem&itemId=" + item.getId()).forward(request, response);
+		}
+
+	}
+	
+	/**
+	 * 根据项目id获取项目详细信息转向projectDetail.jsp
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getItemDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String itemId = request.getParameter("itemId");
+		System.out.println(itemId);
+		ItemService is = new ItemServiceImpl();
+		Item item = is.selectItemByItemId(Integer.valueOf(itemId));
+		
+		System.out.println(item);
+		
+		request.setAttribute("item", item);
+		request.getRequestDispatcher("/page/item/projectDetail.jsp").forward(request, response);
+	}
+	
+	
+	/**
+	 * 项目列表中，根据选择的项目类型获取该项目列表
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getItemListBytype(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String itemtype = request.getParameter("itemtype");
+		System.out.println(itemtype);
+		ItemService is = new ItemServiceImpl();
+		List<Item> itemList = is.getItemByItemtype(Integer.valueOf(itemtype));
+		
+		System.out.println(itemList);
+		
+		request.setAttribute("itemList", itemList);
+		request.getRequestDispatcher("/page/item/projectDetail.jsp").forward(request, response);
+	}
+	
+	/**
+	 * 项目列表中，根据选择的项目状态获取该项目列表
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getItemListBystate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String itemstate = request.getParameter("itemstate");
+		System.out.println(itemstate);
+		ItemService is = new ItemServiceImpl();
+		List<Item> itemList = is.getItemByState(Integer.valueOf(itemstate));
+		
+		System.out.println(itemList);
+		
+		request.setAttribute("itemList", itemList);
+		request.getRequestDispatcher("/page/item/projectDetail.jsp").forward(request, response);
+	}
+	
+	/**
+	 * 项目列表中，根据选择的项目角色获取该项目列表
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void getItemListByrole(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String itemrole = request.getParameter("itemrole");
+		System.out.println(itemrole);
+		ItemService is = new ItemServiceImpl();
+		List<Item> itemList = is.getItemByRoleId(Integer.valueOf(itemrole));
+		
+		System.out.println(itemList);
+		
+		request.setAttribute("itemList", itemList);
+		request.getRequestDispatcher("/page/item/projectDetail.jsp").forward(request, response);
+	}
+}

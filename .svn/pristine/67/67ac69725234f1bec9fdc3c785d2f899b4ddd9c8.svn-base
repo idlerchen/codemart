@@ -1,0 +1,22 @@
+package com.fenbi.codemart.service;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.ItemType;
+
+public interface ItemTypeService {
+	
+	/**
+	 * 处理查询所有行业类型信息的业务逻辑
+	 * @return 所有行业类型的List集合
+	 */
+	public List<ItemType> getItemTypes();
+	
+	/**
+	 * 处理根据行业类型id查询对应行业信息的业务逻辑
+	 * @param itemTypeId 行业类型id
+	 * @return 行业类型id对应的行业类型信息
+	 */
+	public ItemType getItemTypesByItemTypeId(String itemTypeId);
+
+}

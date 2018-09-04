@@ -1,0 +1,235 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
+	<title>码市 - No.15982 - 支付宝AR - 其他</title>
+	<meta name="Keywords" content="Coding,码市,Coding码市,外包,软件外包,Coding源码市场,众包,云端众包,远程工作,悬赏平台,Coding悬赏平台,软件项目需求,软件开发">
+	<meta name="Description" content="码市是 Coding 推出的互联网软件外包服务平台，意在连接需求方与广大开发者。让项目的需求方快速的找到合适的开发者，完成项目开发工作。同时也帮助开发者找到合适的项目将技术变成财富。码市基于 Coding 的在线工具对项目进行管控，保障双方的利益。">
+	<link rel="icon" type="image/x-icon" href="https://codemart.com/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="https://codemart.com/favicon.ico">
+	<base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/">
+	<link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body style="overflow: auto;">
+	<input type="hidden" value="陈国强" name="user_name">
+	<input type="hidden" value="18720080045" name="user_phone">
+	<input type="hidden" value="525448245@qq.com" name="user_email">
+	<input type="hidden" value="web_test02" name="user_global_key">
+
+	<div id="wx_logo" style="margin:0 auto;display:none;">
+		<img src="img/wx_logo.png">
+	</div>
+	<div class="main-container">
+		<header id="mart-header" class="">
+			<%@include file="/page/base/martheader.jsp" %>
+		</header>
+		<div class="view-container">
+			<div id="mart-reward-detail">
+				<div class="content">
+					<section class="reward-title">
+						<input style="display:none" value="15982" name="id">
+						<div class="title-row">
+							<span class="title">支付宝AR</span>
+							<span class="status status-2 pull-right">招募中</span>
+						</div>
+						<div class="desc-row">
+							<div class="role-type">
+								<span class="reward-no">No.15982</span>
+								<span class="type">应用开发&nbsp;</span>
+							</div>
+						</div>
+						<div class="detail-row clearfix">
+							<span class="detail-span border-right"><span class="darker">金额</span>￥20,000</span>
+							<span class="detail-span border-right"><span class="darker">类型</span> 其他
+							</span>
+							<span class="detail-span">
+                <span class="darker">周期</span> 25&nbsp;天
+							</span>
+							<button class="right mart-button join-button blue btn-with-shadow enable">参与项目</button>
+						</div>
+					</section>
+					<section class="reward-title-mobile">
+						<input style="display:none" value="15982" name="id">
+						<div style="background: url(https://dn-coding-net-production-pp.qbox.me/9eea1a40-4294-4f17-92b8-025141834f89.png) center/cover no-repeat" class="reward-cover">
+							<span class="reward-no">No.15982</span>
+						</div>
+						<div class="status status-2-label pull-right">招募中</div>
+						<div class="title-row">
+							<span class="title">支付宝AR</span>
+						</div>
+						<div class="type-row">
+							<i class="fa fa-book"></i>
+							<span class="detail-span border-right">其他</span>
+							<span class="type">应用开发&nbsp;</span>
+						</div>
+						<div class="detail-row">
+							<span class="item">
+                <span class="darker">周期</span>
+							<span class="number">&nbsp;25&nbsp;</span>天
+
+							</span>
+							<span class="item">
+                <span class="darker">金额</span><span class="number">&nbsp;￥20,000</span>
+							</span>
+						</div>
+						<div class="button-row">
+							<button class="right mart-button join-button blue btn-with-shadow enable">参与项目</button>
+						</div>
+						<div class="apply-count">
+							报名人数:&nbsp;&nbsp;1
+						</div>
+					</section>
+					<div class="apply-and-evaluation clearfix">
+						<div class="reward-evaluation">
+							<div class="evaluation-group">
+								<span class="evaluation-item rmb" data-type="1">钱太少<span class="evaluation-count">0</span></span>
+								<span class="evaluation-item clock" data-type="2">时间紧<span class="evaluation-count">0</span></span>
+							</div>
+							<div class="evaluation-group">
+								<span class="evaluation-item hand-down" data-type="3">不靠谱<span class="evaluation-count">0</span></span>
+								<span class="evaluation-item frown" data-type="4">不会做<span class="evaluation-count">0</span></span>
+							</div>
+						</div>
+						<div class="reward-apply">
+							报名人数:&nbsp;&nbsp;1
+						</div>
+					</div>
+					<section class="reward-content">
+						<div class="content-group">
+							<h2>项目描述</h2>
+							<div class="description typo fold">
+								<p>支付宝AR，基于支付宝AR平台的营销互动，通过AR扫一扫呈现3D展示与互动，动画交互，720度全景重力体感浏览以及各商户优惠，卡券的分发与核销。</p>
+							</div>
+						</div>
+						<div class="content-group">
+							<h2>项目规划</h2>
+							<div class="content-item">
+								<h4>项目周期</h4>
+								<div class="content-text">
+									<p>25天</p>
+
+								</div>
+							</div>
+						</div>
+						<div class="content-group">
+							<h2>招募角色</h2>
+							<div class="content-item">
+								<h4>项目角色和金额</h4>
+								<div class="content-text">
+									<p>
+										<span class="role-name">应用开发</span>
+										<span>&nbsp;&nbsp;&nbsp;20000.00&nbsp;元</span></p>
+								</div>
+							</div>
+							<div class="content-item">
+								<h4>项目要求</h4>
+								<div class="description typo fold">
+									<p>了解支付宝AR，有过支付宝AR开发经验优先，熟悉前端开发，熟练使用Vue react等前端框架。</p>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<!--点击报名后出现的表单-->
+				<div class="reward_joined_modal">
+					<div class="modal join_modal" style="display: none">
+						<div class="box">
+							<div class="form">
+								<span class="close join_close"><i class="fa fa-remove"></i></span>
+								<div class="title">报名项目</div>
+								<div class="input">
+									<p class="modal-desc">简述你能胜任项目的原因（详细的说明能增加你的入选率）</p>
+									<textarea class="form-input" rows="5" name="message" placeholder="10~300个字符，描述可以包含您对项目的理解、过往的相关经验、采用的技术方案等。详细的描述能增加您选中参与项目的机率。"></textarea>
+									<p class="modal-desc">请选择要显示给需求方的个人/技能信息</p>
+									<div class="modal-sub-list">
+										<p class="modal-sub">选择您要展示的项目经验</p>
+										<div class="option-list">
+											<span>
+                                <div class="icheckbox_square-mart checked" style="position: relative;">
+                                	<input checked="" type="checkbox" value="109478" name="target_experience" style="position: absolute; opacity: 0;">
+                                	<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                </div>fenbi
+                            </span>
+							<span>
+                                <div class="icheckbox_square-mart checked" style="position: relative;">
+                                	<input checked="" type="checkbox" value="109479" name="target_experience" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>baidu.com
+                            </span>
+										</div>
+									</div>
+								</div>
+								<div class="buttons">
+									<p class="secret">
+										<div class="icheckbox_square-mart"><input type="checkbox" name="secret" style="position: absolute; opacity: 0;">
+											<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+										</div>我承诺，如有接触非公开的项目信息，我将对这些信息保密。
+									</p>
+									<button class="send">提交</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="pay-modal apply-reliance-modal" style="display: none;">
+					<div class="modal-body">
+						<div class="modal-box">
+							<div class="box-body">
+								<span class="close"><i class="fa fa-remove"></i></span>
+								<div class="modal-content pay-confirm">
+									<div class="confirm-text pass">
+										<p class="text">抱歉，由于您不是保证金计划开发者，无法继续报名项目，如需继续报名，请点击 “确认” 前往参加保证金计划。</p>
+									</div>
+									<div class="buttons">
+										<button class="ok send">确定</button>
+										<button class="cancel">取消</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+				<!--<div class="modal owas-modal">
+					<div class="box">
+						<div class="modal-top">
+							<span class="modal-title"></span>
+							<div class="modal-operate">
+								<a href="https://codemart.com/project/15982" class="download">
+									<i class="fa fa-cloud-download"></i>
+								</a>
+								<a href="https://codemart.com/project/15982" class="detail">
+									<i class="fa fa-external-link"></i>
+								</a>
+								<a href="javascript:void(0)">
+									<span class="modal-close">关闭</span>
+								</a>
+							</div>
+							<div class="clear-fix"></div>
+						</div>
+						<div class="modal-content">
+							<iframe src="./码市项目详情_files/saved_resource.html" class="iframe"></iframe>
+						</div>
+					</div>
+				</div>-->
+			</div>
+
+			<!-- <script>
+				var shareMsg = "No.15982 支付宝AR";
+				var sharePic = "https://dn-coding-net-production-pp.qbox.me/9eea1a40-4294-4f17-92b8-025141834f89.png";
+			</script> -->
+
+		</div>
+		
+		<footer id="mart-footer">
+			<%@include file="/page/base/martfooter.jsp" %>
+		</footer>
+	</div>
+
+	
+	
+	<script  src="js/codemart-contact-us-v1.0.0.js"></script>
+</body>
+
+</html>

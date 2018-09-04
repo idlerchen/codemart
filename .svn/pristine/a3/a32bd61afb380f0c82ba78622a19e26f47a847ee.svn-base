@@ -1,0 +1,36 @@
+package com.fenbi.codemart.service.impl;
+
+import java.util.List;
+
+import com.fenbi.codemart.bean.Item;
+import com.fenbi.codemart.dao.ItemDao;
+import com.fenbi.codemart.dao.impl.ItemDaoImpl;
+import com.fenbi.codemart.service.ItemService;
+
+public class ItemServiceImpl implements ItemService {
+
+	ItemDao itemDao = new ItemDaoImpl();
+	
+	@Override
+	public boolean createItem(Item item) {
+		return itemDao.createItem(item) > 0;
+	}
+
+	@Override
+	public List<Item> getItemByUserId(int userId) {
+		return itemDao.selectItemByUserId(userId);
+	}
+
+	@Override
+	public Item selectItemByItemId(int itemId) {
+		return itemDao.selectItemByItemId(itemId);
+	}
+
+	@Override
+	public boolean updateItem(Item item) {
+		return itemDao.updateItem(item) > 0;
+	}
+	
+	
+
+}

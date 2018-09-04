@@ -1,0 +1,4 @@
+$("#rem").click(function(){
+	var state = $("#rem").val();
+	console.log(state);
+});

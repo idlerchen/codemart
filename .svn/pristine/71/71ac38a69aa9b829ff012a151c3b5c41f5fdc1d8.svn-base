@@ -1,0 +1,10 @@
+$(function(){
+	$.get("ItemServlet",
+			{"way":"getsum"},
+			function(response){
+				$("#sum").text(response.money);
+				$("#items").text(response.items);
+				$("#developers").text(response.developers);
+			},
+			'json');
+})

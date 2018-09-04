@@ -1,0 +1,3 @@
+ALTER TABLE developer ADD role VARCHAR(50) AFTER userid;
+
+ALTER TABLE USER MODIFY COLUMN photo_url BLOB;

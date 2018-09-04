@@ -1,0 +1,369 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
+		<title>码市 - 互联网软件外包服务平台</title>
+		<meta name="Keywords" content="Coding,码市,Coding码市,外包,软件外包,Coding源码市场,众包,云端众包,远程工作,悬赏平台,Coding悬赏平台,软件项目需求,软件开发">
+		<meta name="Description" content="码市是 Coding 推出的互联网软件外包服务平台，意在连接需求方与广大开发者。让项目的需求方快速的找到合适的开发者，完成项目开发工作。同时也帮助开发者找到合适的项目将技术变成财富。码市基于 Coding 的在线工具对项目进行管控，保障双方的利益。">
+		<link rel="icon" type="image/x-icon" href="https://codemart.com/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="https://codemart.com/favicon.ico">
+		<base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/">
+		<link rel="stylesheet" href="css/main.min.css">
+	</head>
+
+	<body>
+		<input type="hidden" value="" name="user_name">
+		<input type="hidden" value="" name="user_phone">
+		<input type="hidden" value="" name="user_email">
+		<input type="hidden" value="" name="user_global_key">
+		<div id="wx_logo" style="margin:0 auto;display:none;">
+			<img src="img/wx_logo.png">
+		</div>
+		<div class="main-container">
+			<header id="mart-header" class="transparent" style="opacity: 1;">
+				<%@include file="page/base/martheader.jsp" %>
+			</header>
+			<div class="view-container detailed-footer transparent">
+				<div id="mart-index">
+					<div class="first-page">
+						<div class="bx-wrapper" style="max-width: 100%;">
+							<div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 640px;">
+								<div id="banner" style="width: auto; position: relative;">
+									<div id="banner-1" aria-hidden="true" style="float: none; list-style: none; position: absolute; width: 1903px; z-index: 0; display: none;">
+										<div class="index-grid index-top">
+											<div class="top-motto-container">
+												<p class="top-motto">互联网软件外包服务平台</p>
+											</div>
+											<div class="sub-motto-container">
+												<p class="sub-motto">提供您所需的全套软件开发服务<br></p>
+											</div>
+											<div class="btn-list">
+											<c:if test="${sessionScope.loginUser.userType != 0 }">
+												<a href="page/item/demandIssue.jsp" class="start-button" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;button&#39;, &#39;click&#39;, &#39;Mart-Before-Publishing&#39;)">发布您的需求</a>
+											</c:if>
+												<a href="ItemServlet?way=getAllItems" class="start-button project-list-btn">查看项目列表</a>
+											</div>
+										</div>
+									</div>
+									<div id="banner-project" aria-hidden="false" style="float: none; list-style: none; position: absolute; width: 1903px; z-index: 50; display: block;">
+										<div class="index-grid index-top">
+											<div class="motto-container">
+												<div class="top-motto-container">
+													<div class="top-motto">新版阶段划分<br>自助验收，轻松交付</div>
+													<a href="https://codemart.com/help" class="start-button">了解详情</a>
+												</div>
+												<div class="spacer"></div>
+												<div class="sub-motto-container">
+													<img src="img/banner-project.png">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="bx-controls bx-has-controls-direction bx-has-pager">
+								<div class="bx-controls-direction">
+									<a class="bx-prev" href="https://codemart.com/">Prev</a>
+									<a class="bx-next" href="https://codemart.com/">Next</a>
+								</div>
+								<div class="bx-pager bx-default-pager">
+									<div class="bx-pager-item">
+										<a href="https://codemart.com/" data-slide-index="0" class="bx-pager-link">1</a>
+									</div>
+									<div class="bx-pager-item">
+										<a href="https://codemart.com/" data-slide-index="1" class="bx-pager-link active">2</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="figure-page">
+							<div class="figure-grid grid">
+								<div class="col figure-tab">
+									<p class="figure-number">174,247,786</p>
+									<p class="figure-text">累计总金额</p>
+								</div>
+								<div class="col figure-tab">
+									<p class="figure-number">5,839</p>
+									<p class="figure-text">项目数量</p>
+								</div>
+								<div class="col figure-tab">
+									<p class="figure-number">103,691</p>
+									<p class="figure-text">注册开发者</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="process-page">
+						<div class="process-title">码市交易与服务流程</div>
+						<div class="process-content content-web">
+							<div class="content-text">
+								<div class="publish-number">// 01</div>
+								<div class="publish-title">发布需求</div>
+								<div class="publish-desc">不知道项目如何报价？<br>在这里，3分钟自动估算。<br>覆盖 App、Web、HTML5、微信公众号等常用功能。</div>
+								<div class="publish-link">
+									<a href="https://codemart.com/quote">查看项目报价</a>
+								</div>
+							</div>
+							<div class="content-img">
+								<img src="img/index-content-slice-1@2x.png">
+							</div>
+						</div>
+						<div class="process-content content-phone">
+							<div class="content-img">
+								<img src="img/index-content-slice-1@2x.png">
+							</div>
+							<div class="content-text">
+								<div class="publish-number">// 01</div>
+								<div class="publish-title">发布需求</div>
+								<div class="publish-desc">不知道项目如何报价？<br>在这里，3分钟自动估算。<br>覆盖 App、Web、HTML5、微信公众号等常用功能。</div>
+								<div class="publish-link">
+									<a href="https://codemart.com/quote">查看项目报价</a>
+								</div>
+							</div>
+						</div>
+						<div class="process-content">
+							<div class="content-img">
+								<img src="img/index-content-slice-2@2x-new.png">
+							</div>
+							<div class="content-text">
+								<div class="publish-number">// 02</div>
+								<div class="publish-title">确认合作</div>
+								<div class="publish-desc">海量开发者，技能多样化，<br>实现技能需求匹配，<br>确认合作开发者。</div>
+							</div>
+						</div>
+						<div class="process-content content-web">
+							<div class="content-text">
+								<div class="publish-number">// 03</div>
+								<div class="publish-title">资金托管</div>
+								<div class="publish-desc">项目款分阶段托管，自助验收支付开发者。<br> 高达 1000 万元保险赔付机制，<br> 全方位保障开发进度。
+								</div>
+							</div>
+							<div class="content-img">
+								<img src="img/index-content-slice-3@2x.png">
+							</div>
+						</div>
+						<div class="process-content content-phone">
+							<div class="content-img">
+								<img src="img/index-content-slice-3@2x.png">
+							</div>
+							<div class="content-text">
+								<div class="publish-number">// 03</div>
+								<div class="publish-title">资金托管</div>
+								<div class="publish-desc">项目款分阶段托管，自助验收支付开发者。<br>高达 1000 万元保险赔付机制，<br>全方位保障开发进度。</div>
+							</div>
+						</div>
+						<div class="process-content">
+							<div class="content-img">
+								<img src="img/index-content-slice-4@2x.png">
+							</div>
+							<div class="content-text">
+								<div class="publish-number">// 04</div>
+								<div class="publish-title">无忧交付</div>
+								<div class="publish-desc">云计算软件协作工具 Coding.net，<br>提供代码托管、文档管理、代码质量报告等，<br>让项目过程的每一步都有迹可循，随时监管。</div>
+								<div class="publish-link">
+									<a href="https://coding.net/">使用 Coding.net</a>
+								</div>
+							</div>
+						</div>
+						<div class="process-content last-content content-web">
+							<div class="content-text">
+								<div class="publish-number">// 05</div>
+								<div class="publish-title">无忧质保</div>
+								<div class="publish-desc">项目质保期内，开发者义务修复BUG及调优，<br>保障运营无忧。</div>
+							</div>
+							<div class="content-img">
+								<img src="img/index-content-slice-5@2x.png">
+							</div>
+						</div>
+						<div class="process-content last-content content-phone">
+							<div class="content-img">
+								<img src="img/index-content-slice-5@2x.png">
+							</div>
+							<div class="content-text">
+								<div class="publish-number">// 05</div>
+								<div class="publish-title">无忧质保</div>
+								<div class="publish-desc">项目质保期内，开发者义务修复BUG及调优，<br>保障运营无忧。</div>
+							</div>
+						</div>
+					</div>
+					<div class="codersay-page" style="visibility: visible;">
+						<div class="codersay-head-container page-head-container">
+							<p class="codersay-head page-head">看看他们怎么说</p>
+						</div>
+						<div id="mid-indicator"></div>
+						<div id="mobile-indicator"></div>
+						<div class="bx-wrapper" style="max-width: 980px;">
+							<div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 350px;">
+								<div class="codersay-list-grid" style="width: 6215%; position: relative; transition-duration: 0s; transform: translate3d(-999px, 0px, 0px);">
+									<div class="codersay-list-tab" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“在码市平台，找到的开发者很靠谱，也很及时；我们项目赶时间，码市确实起到了非常大的帮助。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/Fruit-20.png">
+											<p>罗涛</p>
+											<p>CEO</p>
+										</div>
+									</div>
+									<div class="codersay-list-tab" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“码市是中立的平台，有利于发包方和接包方的对等信息沟通，特别是进度控制和支付控制，流程记录清晰，以理为准，这样可以充分杜绝耍赖或者扯皮的发生。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/fj.jpg">
+											<p>菲基</p>
+											<p>创始人</p>
+										</div>
+									</div>
+									<div class="codersay-list-tab" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“跟码市的合作是一次意外之喜。这个过程中重拾了对外包的信心，也感觉到了码市的专业性。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/smj.jpg">
+											<p>邵明鉴</p>
+											<p>产品经理</p>
+										</div>
+									</div>
+									<div class="codersay-list-tab bx-clone" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“已经在码市完成了6个项目，开发者的素质和总体产出都非常不错，通过码市发包方式也提高了开发效率，降低了研发风险。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/lql.jpg">
+											<p>李千龙</p>
+											<p>软件服务公司总经理</p>
+										</div>
+									</div>
+									<div class="codersay-list-tab bx-clone" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“远程开发是我们公司的主要工作方式，也是未来的趋势。码市对于使用自研开源技术的我们帮助很大。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/lxz.jpg">
+											<p>李西峙</p>
+											<p>大富网络 CTO</p>
+										</div>
+									</div>
+									<div class="codersay-list-tab bx-clone" style="float: left; list-style: none; position: relative; width: 316px; margin-right: 16px;" aria-hidden="true">
+										<div class="codersay-list-tab-body">
+											<a>
+												<p>“一直以来我们都认为众包不仅仅是一个工具，更是一种生活方式，小白健康是一个采取纯众包方式进行开发的项目实践，而码市为这种实践做了非常好的探索和努力，希望我们能一起为众包的生态环境做些小事。”</p>
+											</a>
+										</div>
+										<div class="codersay-list-tab-user">
+											<img class="noborder" src="img/ly.png">
+											<p>刘宇</p>
+											<p>小白健康 CEO</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="bx-controls bx-has-pager">
+								<div class="bx-pager bx-default-pager">
+									<div class="bx-pager-item">
+										<a href="https://codemart.com/" data-slide-index="0" class="bx-pager-link active">1</a>
+									</div>
+									<div class="bx-pager-item">
+										<a href="https://codemart.com/" data-slide-index="1" class="bx-pager-link">2</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="start-page">
+						<div class="start-head-container page-head-container">
+							<p class="start-head page-head">心动了吗？立刻开始吧！</p>
+						</div>
+						<a class="publish-button" href="page/item/demandIssue.jsp">发布需求</a>
+					</div>
+				</div>
+			</div>
+			<footer id="mart-footer">
+				<div id="detailed-footer">
+					<div class="footer-container">
+						<section class="footer-section section-left">
+							<div class="footer-list-menu-container ">
+								<p class="footer-list-menu-head">关于码市</p>
+								<ul class="footer-list-menu">
+									<li>
+										<a href="https://codemart.com/about#contact">联系我们</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/about">码市介绍</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/about#report">媒体报道</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/cases">码市案例</a>
+									</li>
+								</ul>
+							</div>
+							<div class="footer-list-menu-container">
+								<p class="footer-list-menu-head">产品服务</p>
+								<ul class="footer-list-menu">
+									<li>
+										<a>下载 APP</a>
+									</li>
+									<li><img class="app-qr-code" src="img/Qcode.png" alt="APP 下载二维码"></li>
+								</ul>
+							</div>
+							<div class="footer-list-menu-container">
+								<a href="https://codemart.com/help">
+									<p class="footer-list-menu-head">帮助</p>
+								</a>
+								<ul class="footer-list-menu">
+									<li>
+										<a href="https://codemart.com/help/question/4">如何发布项目需求？</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/help/question/5">如何为发布的项目需求定价？</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/help/question/18">如何保障项目的保密性？</a>
+									</li>
+									<li>
+										<a href="https://codemart.com/help">查看更多 &gt;&gt;</a>
+									</li>
+								</ul>
+							</div>
+						</section>
+						<section class="footer-section section-right">
+							<div class="footer-list-contact">
+								<p>
+									<img class="logo" src="img/mart-logo-white.png">
+								</p>
+								<p>0755-82788632</p>
+								<p>
+									<a href="mailto:support@codemart.com">support@codemart.com</a>
+								</p>
+							</div>
+							<div class="qun">
+								<img src="img/QQgroup.png">
+								<p>加入码市开发者群</p>
+							</div>
+						</section>
+					</div>
+				</div>
+				<%@include file="/page/base/martfooter.jsp" %>
+			</footer>
+		</div>
+		<script src="js/main.min.js"></script>
+		<script src="js/codemart-contact-us-v1.0.0.js"></script>
+	</body>
+
+</html>

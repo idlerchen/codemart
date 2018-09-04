@@ -1,0 +1,39 @@
+
+$(function(){
+	var itemid = $("#hiddenId").val();
+	//ajax判断开发者是否参与项目，已参与不可再参与。
+	$.post("ApplyServlet",
+			{"way":"isApply","itemid":itemid},
+			function(response){
+				if(response.code ==1){//如果参与过
+					$("#apply").text("已申请");
+					$("#apply").attr("disabled","disabled");
+					$("#apply").css("background","#666");
+				}else{//如果没参与
+					
+				}
+			},
+			'json'
+	);
+})
+
+$("#apply").click(function(){
+	
+	//ajax判断是否有这个开发者信息，有则插入，无则提醒
+	$.post("DeveloperServlet",
+			{"way":"getDeveloper"},
+			function(response){
+				if(response.code >0){//如果是存在这个开发者，则插入跳转
+					var itemid = $("#hiddenId").val();
+					window.location = "ApplyServlet?way=saveApply&itemid="+itemid;
+				}else{//如果没有这个开发者，则不处理，给出提示
+					alert('请注册开发者信息');
+				}
+			},
+			'json'
+	);
+	
+});
+
+
+

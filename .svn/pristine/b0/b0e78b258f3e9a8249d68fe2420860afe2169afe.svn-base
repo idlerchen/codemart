@@ -1,0 +1,65 @@
+@charset "UTF-8";
+#workStatusArea{
+	height: 50px;
+	margin：21px 0;
+}
+#workStatusArea>input{
+	display: none;
+}
+
+#workStatusArea>label{
+     display: inline-block;
+     position: relative;
+     line-height: 50px;
+     color: #999;
+     text-indent:2em;
+     margin-right:10px;
+}
+#workStatusArea>label:after{
+      content: "";/*必须设置*/
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #4289db;
+      position: absolute;
+      top: 15px;
+      left: 0px;
+      border-radius: 20px;
+}
+#workStatusArea>input:checked+label:after{
+    background-color: #4289db;
+}
+
+#roletypearea{
+	
+}
+
+#roletypearea>input{
+	display: none;
+}
+
+#roletypearea>label{
+     display: inline-block;
+     position: relative;
+     line-height: 50px;
+     color: #999;
+     text-indent:2em;
+     margin-right:10px;
+}
+
+#roletypearea>label:after{
+      content: "";/*必须设置*/
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #4289db;
+      position: absolute;
+      top: 15px;
+      left: 0px;
+      border-radius: 5px;
+}
+#roletypearea>input:checked+label:after{
+    background-color: #4289db;
+}
+
+

@@ -1,0 +1,5 @@
+CREATE TABLE work_status(
+id INT,
+NAME VARCHAR(50)
+);
+INSERT INTO work_status(id,NAME) VALUES(4,'关闭接单'),(1,'较少时间兼职'),(2,'较多时间兼职'),(3,'全职SOHO');

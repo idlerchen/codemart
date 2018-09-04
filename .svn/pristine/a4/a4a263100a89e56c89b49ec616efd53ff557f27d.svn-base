@@ -1,0 +1,190 @@
+package com.fenbi.codemart.bean;
+
+import java.util.Date;
+
+/**
+ * 申请信息的实体类，封装apply表的信息
+ *
+ */
+public class Apply {
+
+	private int id;
+	private int itemId;
+	private int developerId;
+	private int state;
+	private String note;
+	private Date createTime;
+	private String difftime;
+	private String workStatus;
+	private String realName;
+	private String telephone;
+	private String photoUrl;
+	private String provinceName;
+	private String cityName;
+	private String countyName;
+	public Apply() {
+		super();
+	}
+
+	public Apply(int id, int itemId, int developerId, int state, String note, Date createTime) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.developerId = developerId;
+		this.state = state;
+		this.note = note;
+		this.createTime = createTime;
+	}
+
+	
+	public Apply(int itemId, int developerId, int state) {
+		this.itemId = itemId;
+		this.developerId = developerId;
+		this.state = state;
+	}
+	
+	
+
+	public Apply(int id, int itemId, int developerId, int state, String note, Date createTime, String workStatus,
+			String realName, String telephone, String photoUrl, String provinceName, String cityName,
+			String countyName) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.developerId = developerId;
+		this.state = state;
+		this.note = note;
+		this.createTime = createTime;
+		this.workStatus = workStatus;
+		this.realName = realName;
+		this.telephone = telephone;
+		this.photoUrl = photoUrl;
+		this.provinceName = provinceName;
+		this.cityName = cityName;
+		this.countyName = countyName;
+	}
+	
+	public String getDifftime() {
+		return difftime;
+	}
+
+	public void setDifftime(String difftime) {
+		this.difftime = difftime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+
+	public int getDeveloperId() {
+		return developerId;
+	}
+
+	public void setDeveloperId(int developerId) {
+		this.developerId = developerId;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	
+	
+	public String getWorkStatus() {
+		return workStatus;
+	}
+
+	public void setWorkStatus(String workStatus) {
+		this.workStatus = workStatus;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public String getProvinceName() {
+		return provinceName;
+	}
+
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	public String getCountyName() {
+		return countyName;
+	}
+
+	public void setCountyName(String countyName) {
+		this.countyName = countyName;
+	}
+
+	@Override
+	public String toString() {
+		return "Apply [id=" + id + ", itemId=" + itemId + ", developerId=" + developerId + ", state=" + state
+				+ ", note=" + note + ", createTime=" + createTime + ", workStatus=" + workStatus + ", realName="
+				+ realName + ", telephone=" + telephone + ", photoUrl=" + photoUrl + ", provinceName=" + provinceName
+				+ ", cityName=" + cityName + ", countyName=" + countyName + "]";
+	}
+
+	
+
+}
